@@ -31,7 +31,7 @@ paths:
         description: CheFeature item to add
         required: false
         schema:
-          $ref: '#/definitions/CheService'
+          $ref: '#/definitions/CheFeature'
       responses:
         201:
           description: The CheService successfully created
