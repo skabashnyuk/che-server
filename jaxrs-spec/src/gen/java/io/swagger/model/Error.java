@@ -11,26 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Error   {
   
-  private @Valid String code = null;
   private @Valid String message = null;
-
-  /**
-   **/
-  public Error code(String code) {
-    this.code = code;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("code")
-  @NotNull
-  public String getCode() {
-    return code;
-  }
-  public void setCode(String code) {
-    this.code = code;
-  }
 
   /**
    **/
@@ -60,13 +41,12 @@ public class Error   {
       return false;
     }
     Error error = (Error) o;
-    return Objects.equals(code, error.code) &&
-        Objects.equals(message, error.message);
+    return Objects.equals(message, error.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, message);
+    return Objects.hash(message);
   }
 
   @Override
@@ -74,7 +54,6 @@ public class Error   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Error {\n");
     
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -509,11 +509,8 @@
     },
     "Error" : {
       "type" : "object",
-      "required" : [ "code", "message" ],
+      "required" : [ "message" ],
       "properties" : {
-        "code" : {
-          "type" : "string"
-        },
         "message" : {
           "type" : "string"
         }
