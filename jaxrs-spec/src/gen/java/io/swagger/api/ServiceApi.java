@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.CheFeature;
 import io.swagger.model.CheService;
 
 import javax.ws.rs.*;
@@ -14,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/service")
 @Api(description = "the service API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T11:02:41.725Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T11:06:52.971Z")
 public class ServiceApi {
 
     @POST
@@ -26,7 +27,7 @@ public class ServiceApi {
         @ApiResponse(code = 400, message = "Missed required parameters, parameters are not valid", response = Void.class),
         @ApiResponse(code = 403, message = "The user does not have access to create a new CheService", response = Void.class),
         @ApiResponse(code = 409, message = "Conflict error occurred during the CheService creation(e.g. The CheService with such name and version already exists)", response = Void.class) })
-    public Response addCheService(@Valid CheService cheServiceItem) {
+    public Response addCheService(@Valid CheFeature cheServiceItem) {
         return Response.ok().entity("magic!").build();
     }
 

@@ -29,7 +29,7 @@
           "description" : "CheFeature item to add",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/CheService"
+            "$ref" : "#/definitions/CheFeature"
           }
         } ],
         "responses" : {
