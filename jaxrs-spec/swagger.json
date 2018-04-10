@@ -34,7 +34,10 @@
         } ],
         "responses" : {
           "201" : {
-            "description" : "The CheService successfully created"
+            "description" : "The CheService successfully created",
+            "schema" : {
+              "$ref" : "#/definitions/CheFeature"
+            }
           },
           "400" : {
             "description" : "Missed required parameters, parameters are not valid"
