@@ -38,11 +38,17 @@ paths:
           schema:
             $ref: '#/definitions/CheService'
         400:
-          description: Missed required parameters, parameters are not valid
+          description: 400 Server receives invalid input parameter
+          schema:
+            $ref: '#/definitions/Error'
         403:
-          description: The user does not have access to create a new CheService
+          description: 403 The user does not have access to update resource
+          schema:
+            $ref: '#/definitions/Error'
         409:
-          description: Conflict error occurred during the CheService creation(e.g. The CheService with such name and version already exists)
+          description: 409 Operation could not be performed because of conflict with prior state.
+          schema:
+            $ref: '#/definitions/Error'
   /service/{name}:
     get:
       summary: Searches latest CheService by name
@@ -63,7 +69,9 @@ paths:
           schema:
             $ref: '#/definitions/CheService'
         500:
-          description: Internal server error occurred during CheService fetching
+          description: 500 Internal server error occurred
+          schema:
+            $ref: '#/definitions/Error'
   /service/{name}/{version}:
     get:
       summary: Get CheService by name and version
@@ -89,7 +97,9 @@ paths:
           schema:
             $ref: '#/definitions/CheService'
         500:
-          description: Internal server error occurred during CheService fetching
+          description: 500 Internal server error occurred
+          schema:
+            $ref: '#/definitions/Error'
     delete:
       summary: Removes CheService by name and version
       description: Removes CheService by name and version
@@ -112,11 +122,17 @@ paths:
         204:
           description: The CheService successfully removed
         403:
-          description: The user does not have access to remove the CheService
+          description: 403 The user does not have access to update resource
+          schema:
+            $ref: '#/definitions/Error'
         404:
-          description: The CheService doesn't exist
+          description: 404 The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
         500:
-          description: Internal server error occurred
+          description: 500 Internal server error occurred
+          schema:
+            $ref: '#/definitions/Error'
   /feature:
     post:
       summary: Create a new CheFeature
@@ -140,35 +156,22 @@ paths:
           description: The CheFeature successfully created
           schema:
             $ref: '#/definitions/CheFeature'
-        400:
-          description: Missed required parameters, parameters are not valid
         403:
-          description: The user does not have access to create a new CheFeature
-        409:
-          description: Conflict error occurred during the CheFeature creation(e.g. The CheFeature with such name and version already exists)
-  /feature/resolve:
-    get:
-      summary: Searches list of CheServices by given list of features
-      description: Searches list of CheServices by given list of features
-      operationId: searchServicesByFeatureList
-      produces:
-      - application/x-yaml
-      - application/json
-      parameters:
-      - name: name
-        in: path
-        description: Numeric ID of the user to get.
-        required: true
-        type: string
-      responses:
-        200:
-          description: The CheFeature successfully fetched
+          description: 403 The user does not have access to update resource
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/CheService'
+            $ref: '#/definitions/Error'
+        404:
+          description: 404 The specified resource was not found
+          schema:
+            $ref: '#/definitions/Error'
+        409:
+          description: 409 Operation could not be performed because of conflict with prior state.
+          schema:
+            $ref: '#/definitions/Error'
         500:
-          description: Internal server error occurred during CheFeature fetching
+          description: 500 Internal server error occurred
+          schema:
+            $ref: '#/definitions/Error'
   /feature/{name}:
     get:
       summary: Searches latest CheFeature by name
@@ -526,9 +529,34 @@ definitions:
         example: o.typefox.theia-ide.che-service.mainpod
     example:
       name: o.typefox.theia-ide.che-service.mainpod
-  ApiException:
+  Error:
     type: object
+    required:
+    - code
+    - message
     properties:
-      name:
+      code:
         type: string
-        example: Exception description
+      message:
+        type: string
+responses:
+  BadRequestException:
+    description: 400 Server receives invalid input parameter
+    schema:
+      $ref: '#/definitions/Error'
+  ForbiddenException:
+    description: 403 The user does not have access to update resource
+    schema:
+      $ref: '#/definitions/Error'
+  NotFoundException:
+    description: 404 The specified resource was not found
+    schema:
+      $ref: '#/definitions/Error'
+  ConflictException:
+    description: 409 Operation could not be performed because of conflict with prior state.
+    schema:
+      $ref: '#/definitions/Error'
+  ServerException:
+    description: 500 Internal server error occurred
+    schema:
+      $ref: '#/definitions/Error'
