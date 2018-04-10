@@ -1,7 +1,7 @@
 package io.swagger.api;
 
 import io.swagger.model.CheFeature;
-import io.swagger.model.CheService;
+import io.swagger.model.Error;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/feature")
 @Api(description = "the feature API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T11:09:32.978Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T12:14:31.850Z")
 public class FeatureApi {
 
     @POST
@@ -24,9 +24,10 @@ public class FeatureApi {
     @ApiOperation(value = "Create a new CheFeature", notes = "Create a new CheFeature", response = CheFeature.class, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "The CheFeature successfully created", response = CheFeature.class),
-        @ApiResponse(code = 400, message = "Missed required parameters, parameters are not valid", response = Void.class),
-        @ApiResponse(code = 403, message = "The user does not have access to create a new CheFeature", response = Void.class),
-        @ApiResponse(code = 409, message = "Conflict error occurred during the CheFeature creation(e.g. The CheFeature with such name and version already exists)", response = Void.class) })
+        @ApiResponse(code = 403, message = "403 The user does not have access to update resource", response = Error.class),
+        @ApiResponse(code = 404, message = "404 The specified resource was not found", response = Error.class),
+        @ApiResponse(code = 409, message = "409 Operation could not be performed because of conflict with prior state.", response = Error.class),
+        @ApiResponse(code = 500, message = "500 Internal server error occurred", response = Error.class) })
     public Response addFeature(@Valid CheFeature cheFeatureItem) {
         return Response.ok().entity("magic!").build();
     }
@@ -63,17 +64,6 @@ public class FeatureApi {
         @ApiResponse(code = 200, message = "The CheFeature successfully fetched", response = CheFeature.class),
         @ApiResponse(code = 500, message = "Internal server error occurred during CheFeature fetching", response = Void.class) })
     public Response searchFeatureByNameAndVersion(@PathParam("name") @ApiParam("CheFeature name.") String name,@PathParam("version") @ApiParam("CheFeature version.") String version) {
-        return Response.ok().entity("magic!").build();
-    }
-
-    @GET
-    @Path("/resolve")
-    @Produces({ "application/x-yaml", "application/json" })
-    @ApiOperation(value = "Searches list of CheServices by given list of features", notes = "Searches list of CheServices by given list of features", response = CheService.class, responseContainer = "List", tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "The CheFeature successfully fetched", response = CheService.class, responseContainer = "List"),
-        @ApiResponse(code = 500, message = "Internal server error occurred during CheFeature fetching", response = Void.class) })
-    public Response searchServicesByFeatureList(@PathParam("name") @ApiParam("Numeric ID of the user to get.") String name) {
         return Response.ok().entity("magic!").build();
     }
 }
