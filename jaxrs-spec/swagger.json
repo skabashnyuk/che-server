@@ -237,7 +237,10 @@
             }
           },
           "500" : {
-            "description" : "Internal server error occurred during CheFeature fetching"
+            "description" : "500 Internal server error occurred",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
           }
         }
       }
@@ -269,7 +272,10 @@
             }
           },
           "500" : {
-            "description" : "Internal server error occurred during CheFeature fetching"
+            "description" : "500 Internal server error occurred",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
           }
         }
       },
@@ -296,13 +302,28 @@
             "description" : "The CheFeature successfully removed"
           },
           "403" : {
-            "description" : "The user does not have access to remove the CheFeature"
+            "description" : "403 The user does not have access to update resource",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
           },
           "404" : {
-            "description" : "The CheFeature doesn't exist"
+            "description" : "404 The specified resource was not found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "409" : {
+            "description" : "409 Operation could not be performed because of conflict with prior state.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
           },
           "500" : {
-            "description" : "Internal server error occurred"
+            "description" : "500 Internal server error occurred",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
           }
         }
       }
