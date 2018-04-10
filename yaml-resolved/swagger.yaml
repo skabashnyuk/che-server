@@ -74,29 +74,6 @@ paths:
           description: 409 Operation could not be performed because of conflict with prior state.
           schema:
             $ref: '#/definitions/Error'
-  /service/{name}:
-    get:
-      summary: Searches latest CheService by name
-      description: Searches latest CheService by name
-      operationId: getServiceByName
-      produces:
-      - application/x-yaml
-      - application/json
-      parameters:
-      - name: name
-        in: path
-        description: Numeric ID of the user to get.
-        required: true
-        type: string
-      responses:
-        200:
-          description: The CheService successfully fetched
-          schema:
-            $ref: '#/definitions/CheService'
-        500:
-          description: 500 Internal server error occurred
-          schema:
-            $ref: '#/definitions/Error'
   /service/{name}/{version}:
     get:
       summary: Get CheService by name and version
