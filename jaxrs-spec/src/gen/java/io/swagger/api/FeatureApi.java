@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/feature")
 @Api(description = "the feature API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T15:15:14.568Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T15:32:01.100Z")
 public class FeatureApi {
 
     @POST
@@ -47,13 +47,12 @@ public class FeatureApi {
     }
 
     @GET
-    @Path("/{name}")
     @Produces({ "application/x-yaml", "application/json" })
-    @ApiOperation(value = "Searches latest CheFeature by name", notes = "Searches latest CheFeature by name", response = CheFeature.class, tags={  })
+    @ApiOperation(value = "Searches CheFeature by list of ids", notes = "Searches CheFeature by list of ids", response = CheFeature.class, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "The CheFeature successfully fetched", response = CheFeature.class),
         @ApiResponse(code = 500, message = "500 Internal server error occurred", response = Error.class) })
-    public Response searchFeatureByName(@PathParam("name") @ApiParam("Numeric ID of the user to get.") String name) {
+    public Response searchFeatureByListOfId(@QueryParam("id") @NotNull   @ApiParam("list if CheService ids.")  List<String> id) {
         return Response.ok().entity("magic!").build();
     }
 

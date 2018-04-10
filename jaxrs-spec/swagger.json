@@ -37,7 +37,7 @@
           "200" : {
             "description" : "The CheService successfully fetched",
             "schema" : {
-              "$ref" : "#/definitions/CheService"
+              "$ref" : "#/definitions/CheServiceList"
             }
           },
           "500" : {
@@ -169,6 +169,37 @@
       }
     },
     "/feature" : {
+      "get" : {
+        "summary" : "Searches CheFeature by list of ids",
+        "description" : "Searches CheFeature by list of ids",
+        "operationId" : "searchFeatureByListOfId",
+        "produces" : [ "application/x-yaml", "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "list if CheService ids.",
+          "required" : true,
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          },
+          "collectionFormat" : "multi"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The CheFeature successfully fetched",
+            "schema" : {
+              "$ref" : "#/definitions/CheFeature"
+            }
+          },
+          "500" : {
+            "description" : "500 Internal server error occurred",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
       "post" : {
         "summary" : "Create a new CheFeature",
         "description" : "Create a new CheFeature",
@@ -207,35 +238,6 @@
             "description" : "409 Operation could not be performed because of conflict with prior state.",
             "schema" : {
               "$ref" : "#/definitions/Error"
-            }
-          },
-          "500" : {
-            "description" : "500 Internal server error occurred",
-            "schema" : {
-              "$ref" : "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/feature/{name}" : {
-      "get" : {
-        "summary" : "Searches latest CheFeature by name",
-        "description" : "Searches latest CheFeature by name",
-        "operationId" : "searchFeatureByName",
-        "produces" : [ "application/x-yaml", "application/json" ],
-        "parameters" : [ {
-          "name" : "name",
-          "in" : "path",
-          "description" : "Numeric ID of the user to get.",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "The CheFeature successfully fetched",
-            "schema" : {
-              "$ref" : "#/definitions/CheFeature"
             }
           },
           "500" : {
@@ -507,6 +509,12 @@
           "type" : "string",
           "example" : "o.typefox.theia-ide.che-service.mainpod"
         }
+      }
+    },
+    "CheServiceList" : {
+      "type" : "array",
+      "items" : {
+        "$ref" : "#/definitions/CheService"
       }
     },
     "Error" : {
