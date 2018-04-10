@@ -29,14 +29,14 @@
           "description" : "CheFeature item to add",
           "required" : false,
           "schema" : {
-            "$ref" : "#/definitions/CheFeature"
+            "$ref" : "#/definitions/CheService"
           }
         } ],
         "responses" : {
           "201" : {
             "description" : "The CheService successfully created",
             "schema" : {
-              "$ref" : "#/definitions/CheFeature"
+              "$ref" : "#/definitions/CheService"
             }
           },
           "400" : {
@@ -160,7 +160,10 @@
         } ],
         "responses" : {
           "201" : {
-            "description" : "The CheFeature successfully created"
+            "description" : "The CheFeature successfully created",
+            "schema" : {
+              "$ref" : "#/definitions/CheFeature"
+            }
           },
           "400" : {
             "description" : "Missed required parameters, parameters are not valid"

@@ -15,15 +15,15 @@ import javax.validation.Valid;
 
 @Path("/feature")
 @Api(description = "the feature API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T11:07:20.284Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T11:09:32.978Z")
 public class FeatureApi {
 
     @POST
     @Consumes({ "application/json", "application/x-yaml" })
     @Produces({ "application/json", "application/x-yaml" })
-    @ApiOperation(value = "Create a new CheFeature", notes = "Create a new CheFeature", response = Void.class, tags={  })
+    @ApiOperation(value = "Create a new CheFeature", notes = "Create a new CheFeature", response = CheFeature.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 201, message = "The CheFeature successfully created", response = Void.class),
+        @ApiResponse(code = 201, message = "The CheFeature successfully created", response = CheFeature.class),
         @ApiResponse(code = 400, message = "Missed required parameters, parameters are not valid", response = Void.class),
         @ApiResponse(code = 403, message = "The user does not have access to create a new CheFeature", response = Void.class),
         @ApiResponse(code = 409, message = "Conflict error occurred during the CheFeature creation(e.g. The CheFeature with such name and version already exists)", response = Void.class) })
