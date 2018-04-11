@@ -1,7 +1,7 @@
 package io.swagger.model;
 
 import io.swagger.model.CheFeatureSpec;
-import io.swagger.model.KubernetesObjectMeta;
+import io.swagger.model.IoK8sApimachineryPkgApisMetaV1ObjectMeta;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,7 +15,7 @@ public class CheFeature   {
   
   private @Valid String apiVersion = null;
   private @Valid String kind = null;
-  private @Valid KubernetesObjectMeta metadata = null;
+  private @Valid IoK8sApimachineryPkgApisMetaV1ObjectMeta metadata = null;
   private @Valid CheFeatureSpec spec = null;
 
   /**
@@ -56,7 +56,7 @@ public class CheFeature   {
 
   /**
    **/
-  public CheFeature metadata(KubernetesObjectMeta metadata) {
+  public CheFeature metadata(IoK8sApimachineryPkgApisMetaV1ObjectMeta metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -65,10 +65,10 @@ public class CheFeature   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("metadata")
   @NotNull
-  public KubernetesObjectMeta getMetadata() {
+  public IoK8sApimachineryPkgApisMetaV1ObjectMeta getMetadata() {
     return metadata;
   }
-  public void setMetadata(KubernetesObjectMeta metadata) {
+  public void setMetadata(IoK8sApimachineryPkgApisMetaV1ObjectMeta metadata) {
     this.metadata = metadata;
   }
 

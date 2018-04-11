@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/service")
 @Api(description = "the service API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T07:12:29.523Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T09:24:42.901Z")
 public class ServiceApi {
 
     @POST
@@ -46,7 +46,7 @@ public class ServiceApi {
 
     @GET
     @Produces({ "application/x-yaml", "application/json" })
-    @ApiOperation(value = "Searches CheService by list of ids", notes = "Searches  CheService by list of ids", response = CheService.class, responseContainer = "List", tags={  })
+    @ApiOperation(value = "Searches CheService by list of ids", notes = "Searches  CheService by list of ids, example ?id=io.typefox.theia-ide.che-service:1.2.3&org.eclipse.che.svn:4.2.3", response = CheService.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "The CheService successfully fetched", response = CheService.class, responseContainer = "List"),
         @ApiResponse(code = 500, message = "500 Internal server error occurred", response = Error.class) })

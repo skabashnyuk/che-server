@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/feature")
 @Api(description = "the feature API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T07:12:29.523Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T09:24:42.901Z")
 public class FeatureApi {
 
     @POST
@@ -48,7 +48,7 @@ public class FeatureApi {
 
     @GET
     @Produces({ "application/x-yaml", "application/json" })
-    @ApiOperation(value = "Searches CheFeature by list of ids", notes = "Searches CheFeature by list of ids", response = CheFeature.class, responseContainer = "List", tags={  })
+    @ApiOperation(value = "Searches CheFeature by list of ids", notes = "Searches CheFeature by list of ids. For example, ?id=io.typefox.theia-ide.che-service:1.2.3&org.eclipse.che.svn:4.2", response = CheFeature.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "The CheFeature successfully fetched", response = CheFeature.class, responseContainer = "List"),
         @ApiResponse(code = 500, message = "500 Internal server error occurred", response = Error.class) })

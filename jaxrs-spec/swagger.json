@@ -19,7 +19,7 @@
     "/service" : {
       "get" : {
         "summary" : "Searches CheService by list of ids",
-        "description" : "Searches  CheService by list of ids",
+        "description" : "Searches  CheService by list of ids, example ?id=io.typefox.theia-ide.che-service:1.2.3&org.eclipse.che.svn:4.2.3",
         "operationId" : "getServiceByIdList",
         "produces" : [ "application/x-yaml", "application/json" ],
         "parameters" : [ {
@@ -174,7 +174,7 @@
     "/feature" : {
       "get" : {
         "summary" : "Searches CheFeature by list of ids",
-        "description" : "Searches CheFeature by list of ids",
+        "description" : "Searches CheFeature by list of ids. For example, ?id=io.typefox.theia-ide.che-service:1.2.3&org.eclipse.che.svn:4.2",
         "operationId" : "searchFeatureByListOfId",
         "produces" : [ "application/x-yaml", "application/json" ],
         "parameters" : [ {
@@ -409,7 +409,7 @@
           "example" : "CheCommand"
         },
         "metadata" : {
-          "$ref" : "#/definitions/KubernetesObjectMeta"
+          "$ref" : "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         },
         "spec" : {
           "$ref" : "#/definitions/CheCommandSpec"
@@ -450,7 +450,7 @@
           "example" : "CheFeature"
         },
         "metadata" : {
-          "$ref" : "#/definitions/KubernetesObjectMeta"
+          "$ref" : "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         },
         "spec" : {
           "$ref" : "#/definitions/CheFeatureSpec"
@@ -504,16 +504,6 @@
         "value" : {
           "type" : "string",
           "example" : "org.eclipse.che.terminal@latest"
-        }
-      }
-    },
-    "KubernetesObjectMeta" : {
-      "type" : "object",
-      "required" : [ "name" ],
-      "properties" : {
-        "name" : {
-          "type" : "string",
-          "example" : "o.typefox.theia-ide.che-service.mainpod"
         }
       }
     },
