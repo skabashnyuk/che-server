@@ -31,17 +31,13 @@ paths:
         items:
           type: string
         collectionFormat: multi
-      - in: body
-        name: param1
-        description: result
-        required: true
-        schema:
-          $ref: '#/definitions/CheService'
       responses:
         200:
           description: The CheService successfully fetched
           schema:
-            $ref: '#/definitions/CheServiceList'
+            type: array
+            items:
+              $ref: '#/definitions/CheService'
         500:
           description: 500 Internal server error occurred
           schema:
