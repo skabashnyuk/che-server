@@ -1,7 +1,6 @@
 package io.swagger.api;
 
 import io.swagger.model.CheService;
-import io.swagger.model.CheServiceList;
 import io.swagger.model.Error;
 
 import javax.ws.rs.*;
@@ -16,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/service")
 @Api(description = "the service API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T06:25:15.547Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T06:33:31.315Z")
 public class ServiceApi {
 
     @POST
@@ -47,11 +46,11 @@ public class ServiceApi {
 
     @GET
     @Produces({ "application/x-yaml", "application/json" })
-    @ApiOperation(value = "Searches CheService by list of ids", notes = "Searches  CheService by list of ids", response = CheServiceList.class, tags={  })
+    @ApiOperation(value = "Searches CheService by list of ids", notes = "Searches  CheService by list of ids", response = CheService.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "The CheService successfully fetched", response = CheServiceList.class),
+        @ApiResponse(code = 200, message = "The CheService successfully fetched", response = CheService.class, responseContainer = "List"),
         @ApiResponse(code = 500, message = "500 Internal server error occurred", response = Error.class) })
-    public Response getServiceByIdList(@QueryParam("id") @NotNull   @ApiParam("list if CheService ids.")  List<String> id,@Valid CheService param1) {
+    public Response getServiceByIdList(@QueryParam("id") @NotNull   @ApiParam("list if CheService ids.")  List<String> id) {
         return Response.ok().entity("magic!").build();
     }
 
