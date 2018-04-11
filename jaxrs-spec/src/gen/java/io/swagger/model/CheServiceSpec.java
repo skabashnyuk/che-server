@@ -1,8 +1,8 @@
 package io.swagger.model;
 
 import io.swagger.model.CheCommand;
+import io.swagger.model.IoK8sApiCoreV1Pod;
 import io.swagger.model.IoK8sApiCoreV1Service;
-import io.swagger.model.Pod;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -18,7 +18,7 @@ public class CheServiceSpec   {
   
   private @Valid String version = null;
   private @Valid List<IoK8sApiCoreV1Service> services = new ArrayList<IoK8sApiCoreV1Service>();
-  private @Valid List<Pod> pods = new ArrayList<Pod>();
+  private @Valid List<IoK8sApiCoreV1Pod> pods = new ArrayList<IoK8sApiCoreV1Pod>();
   private @Valid List<CheCommand> commands = new ArrayList<CheCommand>();
 
   /**
@@ -59,7 +59,7 @@ public class CheServiceSpec   {
 
   /**
    **/
-  public CheServiceSpec pods(List<Pod> pods) {
+  public CheServiceSpec pods(List<IoK8sApiCoreV1Pod> pods) {
     this.pods = pods;
     return this;
   }
@@ -68,10 +68,10 @@ public class CheServiceSpec   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("pods")
   @NotNull
-  public List<Pod> getPods() {
+  public List<IoK8sApiCoreV1Pod> getPods() {
     return pods;
   }
-  public void setPods(List<Pod> pods) {
+  public void setPods(List<IoK8sApiCoreV1Pod> pods) {
     this.pods = pods;
   }
 
