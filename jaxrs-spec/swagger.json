@@ -32,6 +32,14 @@
             "type" : "string"
           },
           "collectionFormat" : "multi"
+        }, {
+          "in" : "body",
+          "name" : "param1",
+          "description" : "result",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CheService"
+          }
         } ],
         "responses" : {
           "200" : {

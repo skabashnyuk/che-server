@@ -16,7 +16,7 @@ import javax.validation.Valid;
 
 @Path("/service")
 @Api(description = "the service API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-10T15:32:01.100Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T06:25:15.547Z")
 public class ServiceApi {
 
     @POST
@@ -51,7 +51,7 @@ public class ServiceApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "The CheService successfully fetched", response = CheServiceList.class),
         @ApiResponse(code = 500, message = "500 Internal server error occurred", response = Error.class) })
-    public Response getServiceByIdList(@QueryParam("id") @NotNull   @ApiParam("list if CheService ids.")  List<String> id) {
+    public Response getServiceByIdList(@QueryParam("id") @NotNull   @ApiParam("list if CheService ids.")  List<String> id,@Valid CheService param1) {
         return Response.ok().entity("magic!").build();
     }
 
