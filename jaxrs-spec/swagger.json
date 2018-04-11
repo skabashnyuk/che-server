@@ -192,7 +192,10 @@
           "200" : {
             "description" : "The CheFeature successfully fetched",
             "schema" : {
-              "$ref" : "#/definitions/CheFeature"
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CheFeature"
+              }
             }
           },
           "500" : {
@@ -512,12 +515,6 @@
           "type" : "string",
           "example" : "o.typefox.theia-ide.che-service.mainpod"
         }
-      }
-    },
-    "CheServiceList" : {
-      "type" : "array",
-      "items" : {
-        "$ref" : "#/definitions/CheService"
       }
     },
     "Error" : {

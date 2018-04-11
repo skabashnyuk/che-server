@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/feature")
 @Api(description = "the feature API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T06:33:31.315Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-11T06:35:54.779Z")
 public class FeatureApi {
 
     @POST
@@ -48,9 +48,9 @@ public class FeatureApi {
 
     @GET
     @Produces({ "application/x-yaml", "application/json" })
-    @ApiOperation(value = "Searches CheFeature by list of ids", notes = "Searches CheFeature by list of ids", response = CheFeature.class, tags={  })
+    @ApiOperation(value = "Searches CheFeature by list of ids", notes = "Searches CheFeature by list of ids", response = CheFeature.class, responseContainer = "List", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "The CheFeature successfully fetched", response = CheFeature.class),
+        @ApiResponse(code = 200, message = "The CheFeature successfully fetched", response = CheFeature.class, responseContainer = "List"),
         @ApiResponse(code = 500, message = "500 Internal server error occurred", response = Error.class) })
     public Response searchFeatureByListOfId(@QueryParam("id") @NotNull   @ApiParam("list if CheService ids.")  List<String> id) {
         return Response.ok().entity("magic!").build();
