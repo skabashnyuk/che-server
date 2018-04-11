@@ -17,7 +17,7 @@ paths:
   /service:
     get:
       summary: Searches CheService by list of ids
-      description: Searches  CheService by list of ids
+      description: Searches  CheService by list of ids, example ?id=io.typefox.theia-ide.che-service:1.2.3&org.eclipse.che.svn:4.2.3
       operationId: getServiceByIdList
       produces:
       - application/x-yaml
@@ -140,7 +140,7 @@ paths:
   /feature:
     get:
       summary: Searches CheFeature by list of ids
-      description: Searches CheFeature by list of ids
+      description: Searches CheFeature by list of ids. For example, ?id=io.typefox.theia-ide.che-service:1.2.3&org.eclipse.che.svn:4.2
       operationId: searchFeatureByListOfId
       produces:
       - application/x-yaml
@@ -4230,7 +4230,65 @@ definitions:
         version: 1.0.0
         commands:
         - metadata:
-            name: o.typefox.theia-ide.che-service.mainpod
+            generation: 6
+            finalizers:
+            - finalizers
+            - finalizers
+            resourceVersion: resourceVersion
+            annotations:
+              key: annotations
+            generateName: generateName
+            deletionTimestamp: null
+            labels:
+              key: labels
+            ownerReferences:
+            - uid: uid
+              controller: true
+              apiVersion: apiVersion
+              kind: kind
+              name: name
+              blockOwnerDeletion: true
+            - uid: uid
+              controller: true
+              apiVersion: apiVersion
+              kind: kind
+              name: name
+              blockOwnerDeletion: true
+            selfLink: selfLink
+            deletionGracePeriodSeconds: 0
+            uid: uid
+            initializers:
+              result:
+                reason: reason
+                metadata:
+                  continue: continue
+                  resourceVersion: resourceVersion
+                  selfLink: selfLink
+                apiVersion: apiVersion
+                code: 1
+                kind: kind
+                details:
+                  uid: uid
+                  kind: kind
+                  causes:
+                  - reason: reason
+                    field: field
+                    message: message
+                  - reason: reason
+                    field: field
+                    message: message
+                  retryAfterSeconds: 5
+                  name: name
+                  group: group
+                message: message
+                status: status
+              pending:
+              - name: name
+              - name: name
+            clusterName: clusterName
+            creationTimestamp: {}
+            name: name
+            namespace: namespace
           apiVersion: che.eclipse.org/v1
           kind: CheCommand
           spec:
@@ -4240,7 +4298,65 @@ definitions:
             - mvn
             - mvn
         - metadata:
-            name: o.typefox.theia-ide.che-service.mainpod
+            generation: 6
+            finalizers:
+            - finalizers
+            - finalizers
+            resourceVersion: resourceVersion
+            annotations:
+              key: annotations
+            generateName: generateName
+            deletionTimestamp: null
+            labels:
+              key: labels
+            ownerReferences:
+            - uid: uid
+              controller: true
+              apiVersion: apiVersion
+              kind: kind
+              name: name
+              blockOwnerDeletion: true
+            - uid: uid
+              controller: true
+              apiVersion: apiVersion
+              kind: kind
+              name: name
+              blockOwnerDeletion: true
+            selfLink: selfLink
+            deletionGracePeriodSeconds: 0
+            uid: uid
+            initializers:
+              result:
+                reason: reason
+                metadata:
+                  continue: continue
+                  resourceVersion: resourceVersion
+                  selfLink: selfLink
+                apiVersion: apiVersion
+                code: 1
+                kind: kind
+                details:
+                  uid: uid
+                  kind: kind
+                  causes:
+                  - reason: reason
+                    field: field
+                    message: message
+                  - reason: reason
+                    field: field
+                    message: message
+                  retryAfterSeconds: 5
+                  name: name
+                  group: group
+                message: message
+                status: status
+              pending:
+              - name: name
+              - name: name
+            clusterName: clusterName
+            creationTimestamp: {}
+            name: name
+            namespace: namespace
           apiVersion: che.eclipse.org/v1
           kind: CheCommand
           spec:
@@ -8152,7 +8268,65 @@ definitions:
       version: 1.0.0
       commands:
       - metadata:
-          name: o.typefox.theia-ide.che-service.mainpod
+          generation: 6
+          finalizers:
+          - finalizers
+          - finalizers
+          resourceVersion: resourceVersion
+          annotations:
+            key: annotations
+          generateName: generateName
+          deletionTimestamp: null
+          labels:
+            key: labels
+          ownerReferences:
+          - uid: uid
+            controller: true
+            apiVersion: apiVersion
+            kind: kind
+            name: name
+            blockOwnerDeletion: true
+          - uid: uid
+            controller: true
+            apiVersion: apiVersion
+            kind: kind
+            name: name
+            blockOwnerDeletion: true
+          selfLink: selfLink
+          deletionGracePeriodSeconds: 0
+          uid: uid
+          initializers:
+            result:
+              reason: reason
+              metadata:
+                continue: continue
+                resourceVersion: resourceVersion
+                selfLink: selfLink
+              apiVersion: apiVersion
+              code: 1
+              kind: kind
+              details:
+                uid: uid
+                kind: kind
+                causes:
+                - reason: reason
+                  field: field
+                  message: message
+                - reason: reason
+                  field: field
+                  message: message
+                retryAfterSeconds: 5
+                name: name
+                group: group
+              message: message
+              status: status
+            pending:
+            - name: name
+            - name: name
+          clusterName: clusterName
+          creationTimestamp: {}
+          name: name
+          namespace: namespace
         apiVersion: che.eclipse.org/v1
         kind: CheCommand
         spec:
@@ -8162,7 +8336,65 @@ definitions:
           - mvn
           - mvn
       - metadata:
-          name: o.typefox.theia-ide.che-service.mainpod
+          generation: 6
+          finalizers:
+          - finalizers
+          - finalizers
+          resourceVersion: resourceVersion
+          annotations:
+            key: annotations
+          generateName: generateName
+          deletionTimestamp: null
+          labels:
+            key: labels
+          ownerReferences:
+          - uid: uid
+            controller: true
+            apiVersion: apiVersion
+            kind: kind
+            name: name
+            blockOwnerDeletion: true
+          - uid: uid
+            controller: true
+            apiVersion: apiVersion
+            kind: kind
+            name: name
+            blockOwnerDeletion: true
+          selfLink: selfLink
+          deletionGracePeriodSeconds: 0
+          uid: uid
+          initializers:
+            result:
+              reason: reason
+              metadata:
+                continue: continue
+                resourceVersion: resourceVersion
+                selfLink: selfLink
+              apiVersion: apiVersion
+              code: 1
+              kind: kind
+              details:
+                uid: uid
+                kind: kind
+                causes:
+                - reason: reason
+                  field: field
+                  message: message
+                - reason: reason
+                  field: field
+                  message: message
+                retryAfterSeconds: 5
+                name: name
+                group: group
+              message: message
+              status: status
+            pending:
+            - name: name
+            - name: name
+          clusterName: clusterName
+          creationTimestamp: {}
+          name: name
+          namespace: namespace
         apiVersion: che.eclipse.org/v1
         kind: CheCommand
         spec:
@@ -8192,12 +8424,70 @@ definitions:
         type: string
         example: CheCommand
       metadata:
-        $ref: '#/definitions/KubernetesObjectMeta'
+        $ref: '#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta'
       spec:
         $ref: '#/definitions/CheCommandSpec'
     example:
       metadata:
-        name: o.typefox.theia-ide.che-service.mainpod
+        generation: 6
+        finalizers:
+        - finalizers
+        - finalizers
+        resourceVersion: resourceVersion
+        annotations:
+          key: annotations
+        generateName: generateName
+        deletionTimestamp: null
+        labels:
+          key: labels
+        ownerReferences:
+        - uid: uid
+          controller: true
+          apiVersion: apiVersion
+          kind: kind
+          name: name
+          blockOwnerDeletion: true
+        - uid: uid
+          controller: true
+          apiVersion: apiVersion
+          kind: kind
+          name: name
+          blockOwnerDeletion: true
+        selfLink: selfLink
+        deletionGracePeriodSeconds: 0
+        uid: uid
+        initializers:
+          result:
+            reason: reason
+            metadata:
+              continue: continue
+              resourceVersion: resourceVersion
+              selfLink: selfLink
+            apiVersion: apiVersion
+            code: 1
+            kind: kind
+            details:
+              uid: uid
+              kind: kind
+              causes:
+              - reason: reason
+                field: field
+                message: message
+              - reason: reason
+                field: field
+                message: message
+              retryAfterSeconds: 5
+              name: name
+              group: group
+            message: message
+            status: status
+          pending:
+          - name: name
+          - name: name
+        clusterName: clusterName
+        creationTimestamp: {}
+        name: name
+        namespace: namespace
       apiVersion: che.eclipse.org/v1
       kind: CheCommand
       spec:
@@ -8245,12 +8535,70 @@ definitions:
         type: string
         example: CheFeature
       metadata:
-        $ref: '#/definitions/KubernetesObjectMeta'
+        $ref: '#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta'
       spec:
         $ref: '#/definitions/CheFeatureSpec'
     example:
       metadata:
-        name: o.typefox.theia-ide.che-service.mainpod
+        generation: 6
+        finalizers:
+        - finalizers
+        - finalizers
+        resourceVersion: resourceVersion
+        annotations:
+          key: annotations
+        generateName: generateName
+        deletionTimestamp: null
+        labels:
+          key: labels
+        ownerReferences:
+        - uid: uid
+          controller: true
+          apiVersion: apiVersion
+          kind: kind
+          name: name
+          blockOwnerDeletion: true
+        - uid: uid
+          controller: true
+          apiVersion: apiVersion
+          kind: kind
+          name: name
+          blockOwnerDeletion: true
+        selfLink: selfLink
+        deletionGracePeriodSeconds: 0
+        uid: uid
+        initializers:
+          result:
+            reason: reason
+            metadata:
+              continue: continue
+              resourceVersion: resourceVersion
+              selfLink: selfLink
+            apiVersion: apiVersion
+            code: 1
+            kind: kind
+            details:
+              uid: uid
+              kind: kind
+              causes:
+              - reason: reason
+                field: field
+                message: message
+              - reason: reason
+                field: field
+                message: message
+              retryAfterSeconds: 5
+              name: name
+              group: group
+            message: message
+            status: status
+          pending:
+          - name: name
+          - name: name
+        clusterName: clusterName
+        creationTimestamp: {}
+        name: name
+        namespace: namespace
       apiVersion: che.eclipse.org/v1
       kind: CheFeature
       spec:
@@ -8339,16 +8687,6 @@ definitions:
     example:
       name: THEIA_PLUGINS
       value: org.eclipse.che.terminal@latest
-  KubernetesObjectMeta:
-    type: object
-    required:
-    - name
-    properties:
-      name:
-        type: string
-        example: o.typefox.theia-ide.che-service.mainpod
-    example:
-      name: o.typefox.theia-ide.che-service.mainpod
   Error:
     type: object
     required:
