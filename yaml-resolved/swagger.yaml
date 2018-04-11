@@ -158,7 +158,9 @@ paths:
         200:
           description: The CheFeature successfully fetched
           schema:
-            $ref: '#/definitions/CheFeature'
+            type: array
+            items:
+              $ref: '#/definitions/CheFeature'
         500:
           description: 500 Internal server error occurred
           schema:
@@ -549,10 +551,6 @@ definitions:
         example: o.typefox.theia-ide.che-service.mainpod
     example:
       name: o.typefox.theia-ide.che-service.mainpod
-  CheServiceList:
-    type: array
-    items:
-      $ref: '#/definitions/CheService'
   Error:
     type: object
     required:
