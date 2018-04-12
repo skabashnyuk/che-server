@@ -311,23 +311,17 @@ definitions:
     type: object
     description: Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy.
   CheCommand:
-    type: object
-    required:
-    - apiVersion
-    - kind
-    - metadata
-    - spec
-    properties:
-      apiVersion:
-        type: string
-        example: che.eclipse.org/v1
-      kind:
-        type: string
-        example: CheCommand
-      metadata:
-        $ref: '#/definitions/ObjectMeta'
-      spec:
-        $ref: '#/definitions/CheCommandSpec'
+    allOf:
+    - $ref: '#/definitions/TypeMeta'
+    - type: object
+      required:
+      - metadata
+      - spec
+      properties:
+        metadata:
+          $ref: '#/definitions/ObjectMeta'
+        spec:
+          $ref: '#/definitions/CheCommandSpec'
   CheCommandSpec:
     type: object
     required:
@@ -347,45 +341,17 @@ definitions:
           type: string
           example: mvn
   CheFeature:
-    type: object
-    required:
-    - apiVersion
-    - kind
-    - metadata
-    - spec
-    properties:
-      apiVersion:
-        type: string
-        example: che.eclipse.org/v1
-      kind:
-        type: string
-        example: CheFeature
-      metadata:
-        $ref: '#/definitions/ObjectMeta'
-      spec:
-        $ref: '#/definitions/CheFeatureSpec'
-    example:
-      metadata:
-        name: org.eclipse.che.theia.git
-      apiVersion: che.eclipse.org/v1
-      kind: CheFeature
-      spec:
-        services:
-        - name: o.typefox.theia-ide.che-service.mainpod
-          services:
-          - name: THEIA_PLUGINS
-            value: org.eclipse.che.terminal@latest
-          - name: THEIA_PLUGINS
-            value: org.eclipse.che.terminal@latest
-          version: 51.233
-        - name: o.typefox.theia-ide.che-service.mainpod
-          services:
-          - name: THEIA_PLUGINS
-            value: org.eclipse.che.terminal@latest
-          - name: THEIA_PLUGINS
-            value: org.eclipse.che.terminal@latest
-          version: 51.233
-        version: 1.0.0
+    allOf:
+    - $ref: '#/definitions/TypeMeta'
+    - type: object
+      required:
+      - metadata
+      - spec
+      properties:
+        metadata:
+          $ref: '#/definitions/ObjectMeta'
+        spec:
+          $ref: '#/definitions/CheFeatureSpec'
   CheFeatureSpec:
     type: object
     required:
@@ -399,23 +365,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/CheServiceReference'
-    example:
-      services:
-      - name: o.typefox.theia-ide.che-service.mainpod
-        services:
-        - name: THEIA_PLUGINS
-          value: org.eclipse.che.terminal@latest
-        - name: THEIA_PLUGINS
-          value: org.eclipse.che.terminal@latest
-        version: 51.233
-      - name: o.typefox.theia-ide.che-service.mainpod
-        services:
-        - name: THEIA_PLUGINS
-          value: org.eclipse.che.terminal@latest
-        - name: THEIA_PLUGINS
-          value: org.eclipse.che.terminal@latest
-        version: 51.233
-      version: 1.0.0
   CheServiceReference:
     type: object
     required:
@@ -432,14 +381,6 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/CheServiceParameter'
-    example:
-      name: o.typefox.theia-ide.che-service.mainpod
-      services:
-      - name: THEIA_PLUGINS
-        value: org.eclipse.che.terminal@latest
-      - name: THEIA_PLUGINS
-        value: org.eclipse.che.terminal@latest
-      version: 51.233
   CheServiceParameter:
     type: object
     required:
@@ -452,9 +393,6 @@ definitions:
       value:
         type: string
         example: org.eclipse.che.terminal@latest
-    example:
-      name: THEIA_PLUGINS
-      value: org.eclipse.che.terminal@latest
   TypeMeta:
     type: object
     required:
@@ -479,8 +417,6 @@ definitions:
         type: string
         example: org.eclipse.che.theia.git
         description: Object name. Name must be unique.
-    example:
-      name: org.eclipse.che.theia.git
   Error:
     type: object
     required:
