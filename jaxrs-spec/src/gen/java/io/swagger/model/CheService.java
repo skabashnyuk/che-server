@@ -27,9 +27,8 @@ public class CheService extends TypeMeta  {
   }
 
   
-  @ApiModelProperty(example = "che.eclipse.org/v1", required = true, value = "")
+  @ApiModelProperty(example = "che.eclipse.org/v1", value = "")
   @JsonProperty("apiVersion")
-  @NotNull
   public String getApiVersion() {
     return apiVersion;
   }
@@ -45,9 +44,8 @@ public class CheService extends TypeMeta  {
   }
 
   
-  @ApiModelProperty(example = "CheService", required = true, value = "")
+  @ApiModelProperty(example = "CheService", value = "")
   @JsonProperty("kind")
-  @NotNull
   public String getKind() {
     return kind;
   }

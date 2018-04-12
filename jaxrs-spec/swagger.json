@@ -345,7 +345,7 @@
         "$ref" : "#/definitions/TypeMeta"
       }, {
         "type" : "object",
-        "required" : [ "apiVersion", "kind", "metadata", "spec" ],
+        "required" : [ "metadata", "spec" ],
         "properties" : {
           "apiVersion" : {
             "type" : "string",
