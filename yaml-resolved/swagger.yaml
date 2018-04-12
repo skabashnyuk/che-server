@@ -327,7 +327,38 @@ definitions:
         description: List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.
         items:
           $ref: '#/definitions/Container'
+      volumes:
+        type: array
+        description: 'List of volumes that can be mounted by containers belonging
+          to the pod. '
+        items:
+          $ref: '#/definitions/Volume'
     description: PodSpec is a description of a pod.
+  Volume:
+    type: object
+    required:
+    - name
+    properties:
+      name:
+        type: string
+        description: 'Volume''s name. Must be a DNS_LABEL and unique within the pod.
+          More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names'
+      persistentVolumeClaim:
+        description: PersistentVolumeClaimVolumeSource represents a reference to a PersistentVolumeClaim in the same namespace.
+        $ref: '#/definitions/PersistentVolumeClaimVolumeSource'
+    description: Volume represents a named volume in a pod that may be accessed by any container in the pod.
+  PersistentVolumeClaimVolumeSource:
+    required:
+    - claimName
+    properties:
+      claimName:
+        type: string
+        description: 'ClaimName is the name of a PersistentVolumeClaim in the same
+          namespace as the pod using this volume. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims'
+      readOnly:
+        type: boolean
+        description: Will force the ReadOnly setting in VolumeMounts. Default false.
+    description: PersistentVolumeClaimVolumeSource references the user's PVC in the same namespace. This volume finds the bound PV and mounts that volume for the pod. A PersistentVolumeClaimVolumeSource is, essentially, a wrapper around another type of volume that is owned by someone else (the system).
   Container:
     type: object
     required:
