@@ -385,12 +385,120 @@
       }
     },
     "Pod" : {
-      "type" : "object",
+      "allOf" : [ {
+        "$ref" : "#/definitions/TypeMeta"
+      }, {
+        "type" : "object",
+        "required" : [ "metadata", "spec" ],
+        "properties" : {
+          "metadata" : {
+            "$ref" : "#/definitions/ObjectMeta"
+          },
+          "spec" : {
+            "$ref" : "#/definitions/PodSpec"
+          }
+        }
+      } ],
       "description" : "Pod is a collection of containers that can run on a host. This resource is created by clients and scheduled onto hosts."
     },
-    "Service" : {
+    "PodSpec" : {
       "type" : "object",
-      "description" : "Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy."
+      "required" : [ "containers" ],
+      "properties" : {
+        "containers" : {
+          "type" : "array",
+          "description" : "List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.",
+          "items" : {
+            "$ref" : "#/definitions/Container"
+          }
+        }
+      },
+      "description" : "PodSpec is a description of a pod."
+    },
+    "Container" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "image" : {
+          "type" : "string",
+          "description" : "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated."
+        },
+        "env" : {
+          "type" : "array",
+          "description" : "List of environment variables to set in the container. Cannot be updated.",
+          "items" : {
+            "$ref" : "#/definitions/EnvVar"
+          }
+        },
+        "volumeMounts" : {
+          "type" : "array",
+          "description" : "Pod volumes to mount into the container's filesystem. Cannot be updated.",
+          "items" : {
+            "$ref" : "#/definitions/VolumeMount"
+          }
+        }
+      },
+      "description" : "A single application container that you want to run within a pod."
+    },
+    "VolumeMount" : {
+      "required" : [ "mountPath", "name" ],
+      "properties" : {
+        "mountPath" : {
+          "type" : "string",
+          "description" : "Path within the container at which the volume should be mounted.  Must not contain ':'."
+        },
+        "mountPropagation" : {
+          "type" : "string",
+          "description" : "mountPropagation determines how mounts are propagated from the host to container and the other way around. When not set, MountPropagationHostToContainer is used. This field is alpha in 1.8 and can be reworked or removed in a future release."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "This must match the Name of a Volume."
+        },
+        "readOnly" : {
+          "type" : "boolean",
+          "description" : "Mounted read-only if true, read-write otherwise (false or unspecified). Defaults to false."
+        },
+        "subPath" : {
+          "type" : "string",
+          "description" : "Path within the volume from which the container's volume should be mounted. Defaults to \"\" (volume's root)."
+        }
+      },
+      "description" : "VolumeMount describes a mounting of a Volume within a container."
+    },
+    "EnvVar" : {
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the environment variable. Must be a C_IDENTIFIER."
+        },
+        "value" : {
+          "type" : "string",
+          "description" : "Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any service environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to \"\"."
+        }
+      },
+      "description" : "EnvVar represents an environment variable present in a Container."
+    },
+    "Service" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/TypeMeta"
+      }, {
+        "type" : "object",
+        "required" : [ "metadata", "spec" ],
+        "properties" : {
+          "metadata" : {
+            "$ref" : "#/definitions/ObjectMeta"
+          },
+          "spec" : {
+            "$ref" : "#/definitions/CheFeatureSpec"
+          }
+        }
+      } ]
     },
     "CheCommand" : {
       "allOf" : [ {

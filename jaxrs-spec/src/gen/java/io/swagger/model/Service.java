@@ -1,20 +1,57 @@
 package io.swagger.model;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.model.CheFeatureSpec;
+import io.swagger.model.ObjectMeta;
+import io.swagger.model.TypeMeta;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 
-/**
- * Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy.
- **/
 import io.swagger.annotations.*;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-@ApiModel(description = "Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy.")
 
-public class Service   {
+
+public class Service extends TypeMeta  {
   
+  private @Valid ObjectMeta metadata = null;
+  private @Valid CheFeatureSpec spec = null;
+
+  /**
+   **/
+  public Service metadata(ObjectMeta metadata) {
+    this.metadata = metadata;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("metadata")
+  @NotNull
+  public ObjectMeta getMetadata() {
+    return metadata;
+  }
+  public void setMetadata(ObjectMeta metadata) {
+    this.metadata = metadata;
+  }
+
+  /**
+   **/
+  public Service spec(CheFeatureSpec spec) {
+    this.spec = spec;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("spec")
+  @NotNull
+  public CheFeatureSpec getSpec() {
+    return spec;
+  }
+  public void setSpec(CheFeatureSpec spec) {
+    this.spec = spec;
+  }
 
 
   @Override
@@ -26,19 +63,22 @@ public class Service   {
       return false;
     }
     Service service = (Service) o;
-    return true;
+    return Objects.equals(metadata, service.metadata) &&
+        Objects.equals(spec, service.spec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash();
+    return Objects.hash(metadata, spec);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Service {\n");
-    
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    spec: ").append(toIndentedString(spec)).append("\n");
     sb.append("}");
     return sb.toString();
   }
