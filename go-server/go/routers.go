@@ -73,10 +73,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"GetServiceByName",
+		"GetServiceByIdList",
 		"GET",
-		"/skabashniuk/Che/1.0.0/service/{name}",
-		GetServiceByName,
+		"/skabashniuk/Che/1.0.0/service",
+		GetServiceByIdList,
 	},
 
 	Route{
@@ -87,10 +87,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"SearchFeatureByName",
+		"SearchFeatureByListOfId",
 		"GET",
-		"/skabashniuk/Che/1.0.0/feature/{name}",
-		SearchFeatureByName,
+		"/skabashniuk/Che/1.0.0/feature",
+		SearchFeatureByListOfId,
 	},
 
 	Route{
@@ -98,13 +98,6 @@ var routes = Routes{
 		"GET",
 		"/skabashniuk/Che/1.0.0/feature/{name}/{version}",
 		SearchFeatureByNameAndVersion,
-	},
-
-	Route{
-		"SearchServicesByFeatureList",
-		"GET",
-		"/skabashniuk/Che/1.0.0/feature/resolve",
-		SearchServicesByFeatureList,
 	},
 
 }
