@@ -2,6 +2,7 @@ package io.swagger.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.model.Container;
+import io.swagger.model.Volume;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PodSpec   {
   
   private @Valid List<Container> containers = new ArrayList<Container>();
+  private @Valid List<Volume> volumes = new ArrayList<Volume>();
 
   /**
    * List of containers belonging to the pod. Containers cannot currently be added or removed. There must be at least one container in a Pod. Cannot be updated.
@@ -39,6 +41,24 @@ public class PodSpec   {
     this.containers = containers;
   }
 
+  /**
+   * List of volumes that can be mounted by containers belonging to the pod. 
+   **/
+  public PodSpec volumes(List<Volume> volumes) {
+    this.volumes = volumes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "List of volumes that can be mounted by containers belonging to the pod. ")
+  @JsonProperty("volumes")
+  public List<Volume> getVolumes() {
+    return volumes;
+  }
+  public void setVolumes(List<Volume> volumes) {
+    this.volumes = volumes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -49,12 +69,13 @@ public class PodSpec   {
       return false;
     }
     PodSpec podSpec = (PodSpec) o;
-    return Objects.equals(containers, podSpec.containers);
+    return Objects.equals(containers, podSpec.containers) &&
+        Objects.equals(volumes, podSpec.volumes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(containers);
+    return Objects.hash(containers, volumes);
   }
 
   @Override
@@ -63,6 +84,7 @@ public class PodSpec   {
     sb.append("class PodSpec {\n");
     
     sb.append("    containers: ").append(toIndentedString(containers)).append("\n");
+    sb.append("    volumes: ").append(toIndentedString(volumes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
