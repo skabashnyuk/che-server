@@ -584,6 +584,13 @@ definitions:
         type: string
         example: org.eclipse.che.theia.git
         description: Object name. Name must be unique.
+      labels:
+        type: object
+        description: 'Map of string keys and values that can be used to organize and
+          categorize (scope and select) objects. May match selectors of replication
+          controllers and services. More info: http://kubernetes.io/docs/user-guide/labels'
+        additionalProperties:
+          type: string
   Error:
     type: object
     required:
