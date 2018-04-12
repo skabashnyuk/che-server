@@ -1,7 +1,7 @@
 package io.swagger.model;
 
 import io.swagger.model.CheCommandSpec;
-import io.swagger.model.IoK8sApimachineryPkgApisMetaV1ObjectMeta;
+import io.swagger.model.ObjectMeta;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,7 +15,7 @@ public class CheCommand   {
   
   private @Valid String apiVersion = null;
   private @Valid String kind = null;
-  private @Valid IoK8sApimachineryPkgApisMetaV1ObjectMeta metadata = null;
+  private @Valid ObjectMeta metadata = null;
   private @Valid CheCommandSpec spec = null;
 
   /**
@@ -56,7 +56,7 @@ public class CheCommand   {
 
   /**
    **/
-  public CheCommand metadata(IoK8sApimachineryPkgApisMetaV1ObjectMeta metadata) {
+  public CheCommand metadata(ObjectMeta metadata) {
     this.metadata = metadata;
     return this;
   }
@@ -65,10 +65,10 @@ public class CheCommand   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("metadata")
   @NotNull
-  public IoK8sApimachineryPkgApisMetaV1ObjectMeta getMetadata() {
+  public ObjectMeta getMetadata() {
     return metadata;
   }
-  public void setMetadata(IoK8sApimachineryPkgApisMetaV1ObjectMeta metadata) {
+  public void setMetadata(ObjectMeta metadata) {
     this.metadata = metadata;
   }
 

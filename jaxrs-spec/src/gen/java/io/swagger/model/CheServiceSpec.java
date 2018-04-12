@@ -1,8 +1,8 @@
 package io.swagger.model;
 
 import io.swagger.model.CheCommand;
-import io.swagger.model.IoK8sApiCoreV1Pod;
-import io.swagger.model.IoK8sApiCoreV1Service;
+import io.swagger.model.Pod;
+import io.swagger.model.Service;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -17,8 +17,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CheServiceSpec   {
   
   private @Valid String version = null;
-  private @Valid List<IoK8sApiCoreV1Service> services = new ArrayList<IoK8sApiCoreV1Service>();
-  private @Valid List<IoK8sApiCoreV1Pod> pods = new ArrayList<IoK8sApiCoreV1Pod>();
+  private @Valid List<Service> services = new ArrayList<Service>();
+  private @Valid List<Pod> pods = new ArrayList<Pod>();
   private @Valid List<CheCommand> commands = new ArrayList<CheCommand>();
 
   /**
@@ -41,7 +41,7 @@ public class CheServiceSpec   {
 
   /**
    **/
-  public CheServiceSpec services(List<IoK8sApiCoreV1Service> services) {
+  public CheServiceSpec services(List<Service> services) {
     this.services = services;
     return this;
   }
@@ -50,16 +50,16 @@ public class CheServiceSpec   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("services")
   @NotNull
-  public List<IoK8sApiCoreV1Service> getServices() {
+  public List<Service> getServices() {
     return services;
   }
-  public void setServices(List<IoK8sApiCoreV1Service> services) {
+  public void setServices(List<Service> services) {
     this.services = services;
   }
 
   /**
    **/
-  public CheServiceSpec pods(List<IoK8sApiCoreV1Pod> pods) {
+  public CheServiceSpec pods(List<Pod> pods) {
     this.pods = pods;
     return this;
   }
@@ -68,10 +68,10 @@ public class CheServiceSpec   {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("pods")
   @NotNull
-  public List<IoK8sApiCoreV1Pod> getPods() {
+  public List<Pod> getPods() {
     return pods;
   }
-  public void setPods(List<IoK8sApiCoreV1Pod> pods) {
+  public void setPods(List<Pod> pods) {
     this.pods = pods;
   }
 
