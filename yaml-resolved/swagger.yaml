@@ -277,12 +277,6 @@ definitions:
       - metadata
       - spec
       properties:
-        apiVersion:
-          type: string
-          example: che.eclipse.org/v1
-        kind:
-          type: string
-          example: CheService
         metadata:
           $ref: '#/definitions/ObjectMeta'
         spec:
