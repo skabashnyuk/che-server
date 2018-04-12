@@ -14,44 +14,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CheService extends TypeMeta  {
   
-  private @Valid String apiVersion = null;
-  private @Valid String kind = null;
   private @Valid ObjectMeta metadata = null;
   private @Valid CheServiceSpec spec = null;
-
-  /**
-   **/
-  public CheService apiVersion(String apiVersion) {
-    this.apiVersion = apiVersion;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "che.eclipse.org/v1", value = "")
-  @JsonProperty("apiVersion")
-  public String getApiVersion() {
-    return apiVersion;
-  }
-  public void setApiVersion(String apiVersion) {
-    this.apiVersion = apiVersion;
-  }
-
-  /**
-   **/
-  public CheService kind(String kind) {
-    this.kind = kind;
-    return this;
-  }
-
-  
-  @ApiModelProperty(example = "CheService", value = "")
-  @JsonProperty("kind")
-  public String getKind() {
-    return kind;
-  }
-  public void setKind(String kind) {
-    this.kind = kind;
-  }
 
   /**
    **/
@@ -99,15 +63,13 @@ public class CheService extends TypeMeta  {
       return false;
     }
     CheService cheService = (CheService) o;
-    return Objects.equals(apiVersion, cheService.apiVersion) &&
-        Objects.equals(kind, cheService.kind) &&
-        Objects.equals(metadata, cheService.metadata) &&
+    return Objects.equals(metadata, cheService.metadata) &&
         Objects.equals(spec, cheService.spec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiVersion, kind, metadata, spec);
+    return Objects.hash(metadata, spec);
   }
 
   @Override
@@ -115,8 +77,6 @@ public class CheService extends TypeMeta  {
     StringBuilder sb = new StringBuilder();
     sb.append("class CheService {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
-    sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
-    sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    spec: ").append(toIndentedString(spec)).append("\n");
     sb.append("}");
