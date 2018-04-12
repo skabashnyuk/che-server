@@ -1,7 +1,7 @@
 package io.swagger.model;
 
-import io.swagger.model.CheFeatureSpec;
 import io.swagger.model.ObjectMeta;
+import io.swagger.model.ServiceSpec;
 import io.swagger.model.TypeMeta;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Service extends TypeMeta  {
   
   private @Valid ObjectMeta metadata = null;
-  private @Valid CheFeatureSpec spec = null;
+  private @Valid ServiceSpec spec = null;
 
   /**
    **/
@@ -37,7 +37,7 @@ public class Service extends TypeMeta  {
 
   /**
    **/
-  public Service spec(CheFeatureSpec spec) {
+  public Service spec(ServiceSpec spec) {
     this.spec = spec;
     return this;
   }
@@ -46,10 +46,10 @@ public class Service extends TypeMeta  {
   @ApiModelProperty(required = true, value = "")
   @JsonProperty("spec")
   @NotNull
-  public CheFeatureSpec getSpec() {
+  public ServiceSpec getSpec() {
     return spec;
   }
-  public void setSpec(CheFeatureSpec spec) {
+  public void setSpec(ServiceSpec spec) {
     this.spec = spec;
   }
 
