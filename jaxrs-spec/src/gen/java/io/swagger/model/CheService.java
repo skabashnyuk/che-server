@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import io.swagger.model.CheServiceSpec;
 import io.swagger.model.ObjectMeta;
 import io.swagger.model.TypeMeta;
 import javax.validation.constraints.*;
@@ -16,6 +17,7 @@ public class CheService extends TypeMeta  {
   private @Valid String apiVersion = null;
   private @Valid String kind = null;
   private @Valid ObjectMeta metadata = null;
+  private @Valid CheServiceSpec spec = null;
 
   /**
    **/
@@ -71,6 +73,24 @@ public class CheService extends TypeMeta  {
     this.metadata = metadata;
   }
 
+  /**
+   **/
+  public CheService spec(CheServiceSpec spec) {
+    this.spec = spec;
+    return this;
+  }
+
+  
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("spec")
+  @NotNull
+  public CheServiceSpec getSpec() {
+    return spec;
+  }
+  public void setSpec(CheServiceSpec spec) {
+    this.spec = spec;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -83,12 +103,13 @@ public class CheService extends TypeMeta  {
     CheService cheService = (CheService) o;
     return Objects.equals(apiVersion, cheService.apiVersion) &&
         Objects.equals(kind, cheService.kind) &&
-        Objects.equals(metadata, cheService.metadata);
+        Objects.equals(metadata, cheService.metadata) &&
+        Objects.equals(spec, cheService.spec);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiVersion, kind, metadata);
+    return Objects.hash(apiVersion, kind, metadata, spec);
   }
 
   @Override
@@ -99,6 +120,7 @@ public class CheService extends TypeMeta  {
     sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    spec: ").append(toIndentedString(spec)).append("\n");
     sb.append("}");
     return sb.toString();
   }
