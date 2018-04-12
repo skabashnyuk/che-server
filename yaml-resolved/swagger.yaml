@@ -277,6 +277,7 @@ definitions:
       - apiVersion
       - kind
       - metadata
+      - spec
       properties:
         apiVersion:
           type: string
@@ -286,6 +287,8 @@ definitions:
           example: CheService
         metadata:
           $ref: '#/definitions/ObjectMeta'
+        spec:
+          $ref: '#/definitions/CheServiceSpec'
   CheServiceSpec:
     type: object
     required:
