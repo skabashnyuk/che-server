@@ -393,24 +393,20 @@
       "description" : "Service is a named abstraction of software service (for example, mysql) consisting of local port (for example 3306) that the proxy listens on, and the selector that determines which pods will answer requests sent through the proxy."
     },
     "CheCommand" : {
-      "type" : "object",
-      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
-      "properties" : {
-        "apiVersion" : {
-          "type" : "string",
-          "example" : "che.eclipse.org/v1"
-        },
-        "kind" : {
-          "type" : "string",
-          "example" : "CheCommand"
-        },
-        "metadata" : {
-          "$ref" : "#/definitions/ObjectMeta"
-        },
-        "spec" : {
-          "$ref" : "#/definitions/CheCommandSpec"
+      "allOf" : [ {
+        "$ref" : "#/definitions/TypeMeta"
+      }, {
+        "type" : "object",
+        "required" : [ "metadata", "spec" ],
+        "properties" : {
+          "metadata" : {
+            "$ref" : "#/definitions/ObjectMeta"
+          },
+          "spec" : {
+            "$ref" : "#/definitions/CheCommandSpec"
+          }
         }
-      }
+      } ]
     },
     "CheCommandSpec" : {
       "type" : "object",
@@ -434,24 +430,20 @@
       }
     },
     "CheFeature" : {
-      "type" : "object",
-      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
-      "properties" : {
-        "apiVersion" : {
-          "type" : "string",
-          "example" : "che.eclipse.org/v1"
-        },
-        "kind" : {
-          "type" : "string",
-          "example" : "CheFeature"
-        },
-        "metadata" : {
-          "$ref" : "#/definitions/ObjectMeta"
-        },
-        "spec" : {
-          "$ref" : "#/definitions/CheFeatureSpec"
+      "allOf" : [ {
+        "$ref" : "#/definitions/TypeMeta"
+      }, {
+        "type" : "object",
+        "required" : [ "metadata", "spec" ],
+        "properties" : {
+          "metadata" : {
+            "$ref" : "#/definitions/ObjectMeta"
+          },
+          "spec" : {
+            "$ref" : "#/definitions/CheFeatureSpec"
+          }
         }
-      }
+      } ]
     },
     "CheFeatureSpec" : {
       "type" : "object",

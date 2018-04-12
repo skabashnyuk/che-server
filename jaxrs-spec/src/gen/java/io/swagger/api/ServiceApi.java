@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/service")
 @Api(description = "the service API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-12T11:36:05.858Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-12T11:38:12.284Z")
 public class ServiceApi {
 
     @POST
