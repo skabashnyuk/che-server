@@ -341,24 +341,25 @@
   },
   "definitions" : {
     "CheService" : {
-      "type" : "object",
-      "required" : [ "apiVersion", "kind", "metadata", "spec" ],
-      "properties" : {
-        "apiVersion" : {
-          "type" : "string",
-          "example" : "che.eclipse.org/v1"
-        },
-        "kind" : {
-          "type" : "string",
-          "example" : "CheService"
-        },
-        "metadata" : {
-          "$ref" : "#/definitions/ObjectMeta"
-        },
-        "spec" : {
-          "$ref" : "#/definitions/CheServiceSpec"
+      "allOf" : [ {
+        "$ref" : "#/definitions/TypeMeta"
+      }, {
+        "type" : "object",
+        "required" : [ "apiVersion", "kind", "metadata" ],
+        "properties" : {
+          "apiVersion" : {
+            "type" : "string",
+            "example" : "che.eclipse.org/v1"
+          },
+          "kind" : {
+            "type" : "string",
+            "example" : "CheService"
+          },
+          "metadata" : {
+            "$ref" : "#/definitions/ObjectMeta"
+          }
         }
-      }
+      } ]
     },
     "CheServiceSpec" : {
       "type" : "object",
@@ -506,6 +507,23 @@
           "example" : "org.eclipse.che.terminal@latest"
         }
       }
+    },
+    "TypeMeta" : {
+      "type" : "object",
+      "required" : [ "apiVersion", "kind" ],
+      "properties" : {
+        "kind" : {
+          "type" : "string",
+          "example" : "CheService",
+          "description" : "Kind is a string value representing the REST resource this object represents."
+        },
+        "apiVersion" : {
+          "type" : "string",
+          "example" : "che.eclipse.org/v1",
+          "description" : "APIVersion defines the versioned schema of this representation of an object"
+        }
+      },
+      "description" : "TypeMeta describes an individual object in an API response or request with strings representing the type of the object and its API schema version. Structures that are versioned or persisted should inline TypeMeta"
     },
     "ObjectMeta" : {
       "type" : "object",

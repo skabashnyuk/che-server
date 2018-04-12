@@ -1,7 +1,7 @@
 package io.swagger.model;
 
-import io.swagger.model.CheServiceSpec;
 import io.swagger.model.ObjectMeta;
+import io.swagger.model.TypeMeta;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -11,12 +11,11 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-public class CheService   {
+public class CheService extends TypeMeta  {
   
   private @Valid String apiVersion = null;
   private @Valid String kind = null;
   private @Valid ObjectMeta metadata = null;
-  private @Valid CheServiceSpec spec = null;
 
   /**
    **/
@@ -72,24 +71,6 @@ public class CheService   {
     this.metadata = metadata;
   }
 
-  /**
-   **/
-  public CheService spec(CheServiceSpec spec) {
-    this.spec = spec;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("spec")
-  @NotNull
-  public CheServiceSpec getSpec() {
-    return spec;
-  }
-  public void setSpec(CheServiceSpec spec) {
-    this.spec = spec;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -102,24 +83,22 @@ public class CheService   {
     CheService cheService = (CheService) o;
     return Objects.equals(apiVersion, cheService.apiVersion) &&
         Objects.equals(kind, cheService.kind) &&
-        Objects.equals(metadata, cheService.metadata) &&
-        Objects.equals(spec, cheService.spec);
+        Objects.equals(metadata, cheService.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apiVersion, kind, metadata, spec);
+    return Objects.hash(apiVersion, kind, metadata);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CheService {\n");
-    
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    apiVersion: ").append(toIndentedString(apiVersion)).append("\n");
     sb.append("    kind: ").append(toIndentedString(kind)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
-    sb.append("    spec: ").append(toIndentedString(spec)).append("\n");
     sb.append("}");
     return sb.toString();
   }
