@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ServicePort   {
   
   private @Valid String name = null;
-  private @Valid Integer nodePort = null;
   private @Valid Integer port = null;
   private @Valid String protocol = null;
   private @Valid String targetPort = null;
@@ -37,24 +36,6 @@ public class ServicePort   {
   }
   public void setName(String name) {
     this.name = name;
-  }
-
-  /**
-   * The port on each node on which this service is exposed when type&#x3D;NodePort or LoadBalancer. Usually assigned by the system. If specified, it will be allocated to the service if unused or else creation of the service will fail. Default is to auto-allocate a port if the ServiceType of this Service requires one. More info: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
-   **/
-  public ServicePort nodePort(Integer nodePort) {
-    this.nodePort = nodePort;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "The port on each node on which this service is exposed when type=NodePort or LoadBalancer. Usually assigned by the system. If specified, it will be allocated to the service if unused or else creation of the service will fail. Default is to auto-allocate a port if the ServiceType of this Service requires one. More info: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport")
-  @JsonProperty("nodePort")
-  public Integer getNodePort() {
-    return nodePort;
-  }
-  public void setNodePort(Integer nodePort) {
-    this.nodePort = nodePort;
   }
 
   /**
@@ -123,7 +104,6 @@ public class ServicePort   {
     }
     ServicePort servicePort = (ServicePort) o;
     return Objects.equals(name, servicePort.name) &&
-        Objects.equals(nodePort, servicePort.nodePort) &&
         Objects.equals(port, servicePort.port) &&
         Objects.equals(protocol, servicePort.protocol) &&
         Objects.equals(targetPort, servicePort.targetPort);
@@ -131,7 +111,7 @@ public class ServicePort   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, nodePort, port, protocol, targetPort);
+    return Objects.hash(name, port, protocol, targetPort);
   }
 
   @Override
@@ -140,7 +120,6 @@ public class ServicePort   {
     sb.append("class ServicePort {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    nodePort: ").append(toIndentedString(nodePort)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
     sb.append("    targetPort: ").append(toIndentedString(targetPort)).append("\n");
