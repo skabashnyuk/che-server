@@ -388,7 +388,6 @@
           }
         },
         "resources" : {
-          "description" : "Compute Resources required by this container. Cannot be updated. More",
           "$ref" : "#/definitions/ResourceRequirements"
         },
         "commands" : {
@@ -397,6 +396,16 @@
           "items" : {
             "$ref" : "#/definitions/Command"
           }
+        },
+        "servers" : {
+          "type" : "array",
+          "description" : "List of container servers",
+          "items" : {
+            "$ref" : "#/definitions/Server"
+          }
+        },
+        "attributes" : {
+          "type" : "string"
         }
       }
     },
@@ -460,6 +469,24 @@
           "items" : {
             "$ref" : "#/definitions/CheServiceReference"
           }
+        }
+      }
+    },
+    "Server" : {
+      "type" : "object",
+      "required" : [ "name", "port", "protocol" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "theia"
+        },
+        "port" : {
+          "type" : "integer",
+          "example" : 8080
+        },
+        "protocol" : {
+          "type" : "string",
+          "example" : "ws"
         }
       }
     },

@@ -3,6 +3,7 @@ package io.swagger.model;
 import io.swagger.model.Command;
 import io.swagger.model.EnvVar;
 import io.swagger.model.ResourceRequirements;
+import io.swagger.model.Server;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -20,6 +21,8 @@ public class Container   {
   private @Valid List<EnvVar> env = new ArrayList<EnvVar>();
   private @Valid ResourceRequirements resources = null;
   private @Valid List<Command> commands = new ArrayList<Command>();
+  private @Valid List<Server> servers = new ArrayList<Server>();
+  private @Valid String attributes = null;
 
   /**
    **/
@@ -58,7 +61,6 @@ public class Container   {
   }
 
   /**
-   * Compute Resources required by this container. Cannot be updated. More
    **/
   public Container resources(ResourceRequirements resources) {
     this.resources = resources;
@@ -66,7 +68,7 @@ public class Container   {
   }
 
   
-  @ApiModelProperty(value = "Compute Resources required by this container. Cannot be updated. More")
+  @ApiModelProperty(value = "")
   @JsonProperty("resources")
   public ResourceRequirements getResources() {
     return resources;
@@ -93,6 +95,41 @@ public class Container   {
     this.commands = commands;
   }
 
+  /**
+   * List of container servers
+   **/
+  public Container servers(List<Server> servers) {
+    this.servers = servers;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "List of container servers")
+  @JsonProperty("servers")
+  public List<Server> getServers() {
+    return servers;
+  }
+  public void setServers(List<Server> servers) {
+    this.servers = servers;
+  }
+
+  /**
+   **/
+  public Container attributes(String attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public String getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(String attributes) {
+    this.attributes = attributes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -106,12 +143,14 @@ public class Container   {
     return Objects.equals(image, container.image) &&
         Objects.equals(env, container.env) &&
         Objects.equals(resources, container.resources) &&
-        Objects.equals(commands, container.commands);
+        Objects.equals(commands, container.commands) &&
+        Objects.equals(servers, container.servers) &&
+        Objects.equals(attributes, container.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(image, env, resources, commands);
+    return Objects.hash(image, env, resources, commands, servers, attributes);
   }
 
   @Override
@@ -123,6 +162,8 @@ public class Container   {
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    commands: ").append(toIndentedString(commands)).append("\n");
+    sb.append("    servers: ").append(toIndentedString(servers)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
