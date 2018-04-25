@@ -310,6 +310,11 @@ definitions:
       resources:
         description: Compute Resources required by this container. Cannot be updated. More
         $ref: '#/definitions/ResourceRequirements'
+      commands:
+        type: array
+        description: List of container commands
+        items:
+          $ref: '#/definitions/Command'
   ResourceRequirements:
     type: object
     properties:
@@ -363,6 +368,24 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/CheServiceReference'
+  Command:
+    type: object
+    required:
+    - command
+    - name
+    - working-dir
+    properties:
+      name:
+        type: string
+        example: build
+      working-dir:
+        type: string
+        example: $(project)
+      command:
+        type: array
+        items:
+          type: string
+          example: mvn
   CheServiceReference:
     type: object
     required:
