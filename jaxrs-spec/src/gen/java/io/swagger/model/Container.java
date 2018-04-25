@@ -1,31 +1,25 @@
 package io.swagger.model;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.model.EnvVar;
-import io.swagger.model.VolumeMount;
+import io.swagger.model.ResourceRequirements;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 
-/**
- * A single application container that you want to run within a pod.
- **/
 import io.swagger.annotations.*;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-@ApiModel(description = "A single application container that you want to run within a pod.")
+
 
 public class Container   {
   
   private @Valid String image = null;
-  private @Valid String name = null;
   private @Valid List<EnvVar> env = new ArrayList<EnvVar>();
-  private @Valid List<VolumeMount> volumeMounts = new ArrayList<VolumeMount>();
+  private @Valid ResourceRequirements resources = null;
 
   /**
-   * Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets.
    **/
   public Container image(String image) {
     this.image = image;
@@ -33,32 +27,14 @@ public class Container   {
   }
 
   
-  @ApiModelProperty(value = "Docker image name. More info: https://kubernetes.io/docs/concepts/containers/images This field is optional to allow higher level config management to default or override container images in workload controllers like Deployments and StatefulSets.")
+  @ApiModelProperty(example = "eclipse/che-theia:nightly", required = true, value = "")
   @JsonProperty("image")
+  @NotNull
   public String getImage() {
     return image;
   }
   public void setImage(String image) {
     this.image = image;
-  }
-
-  /**
-   * Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.
-   **/
-  public Container name(String name) {
-    this.name = name;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "Name of the container specified as a DNS_LABEL. Each container in a pod must have a unique name (DNS_LABEL). Cannot be updated.")
-  @JsonProperty("name")
-  @NotNull
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
   }
 
   /**
@@ -80,21 +56,21 @@ public class Container   {
   }
 
   /**
-   * Pod volumes to mount into the container&#39;s filesystem. Cannot be updated.
+   * Compute Resources required by this container. Cannot be updated. More
    **/
-  public Container volumeMounts(List<VolumeMount> volumeMounts) {
-    this.volumeMounts = volumeMounts;
+  public Container resources(ResourceRequirements resources) {
+    this.resources = resources;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Pod volumes to mount into the container's filesystem. Cannot be updated.")
-  @JsonProperty("volumeMounts")
-  public List<VolumeMount> getVolumeMounts() {
-    return volumeMounts;
+  @ApiModelProperty(value = "Compute Resources required by this container. Cannot be updated. More")
+  @JsonProperty("resources")
+  public ResourceRequirements getResources() {
+    return resources;
   }
-  public void setVolumeMounts(List<VolumeMount> volumeMounts) {
-    this.volumeMounts = volumeMounts;
+  public void setResources(ResourceRequirements resources) {
+    this.resources = resources;
   }
 
 
@@ -108,14 +84,13 @@ public class Container   {
     }
     Container container = (Container) o;
     return Objects.equals(image, container.image) &&
-        Objects.equals(name, container.name) &&
         Objects.equals(env, container.env) &&
-        Objects.equals(volumeMounts, container.volumeMounts);
+        Objects.equals(resources, container.resources);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(image, name, env, volumeMounts);
+    return Objects.hash(image, env, resources);
   }
 
   @Override
@@ -124,9 +99,8 @@ public class Container   {
     sb.append("class Container {\n");
     
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
-    sb.append("    volumeMounts: ").append(toIndentedString(volumeMounts)).append("\n");
+    sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("}");
     return sb.toString();
   }

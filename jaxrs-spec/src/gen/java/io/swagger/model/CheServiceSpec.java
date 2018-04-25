@@ -1,8 +1,6 @@
 package io.swagger.model;
 
-import io.swagger.model.CheCommand;
-import io.swagger.model.Pod;
-import io.swagger.model.Service;
+import io.swagger.model.Container;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -17,9 +15,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CheServiceSpec   {
   
   private @Valid String version = null;
-  private @Valid List<Service> services = new ArrayList<Service>();
-  private @Valid List<Pod> pods = new ArrayList<Pod>();
-  private @Valid List<CheCommand> commands = new ArrayList<CheCommand>();
+  private @Valid List<Container> containers = new ArrayList<Container>();
 
   /**
    **/
@@ -41,56 +37,20 @@ public class CheServiceSpec   {
 
   /**
    **/
-  public CheServiceSpec services(List<Service> services) {
-    this.services = services;
+  public CheServiceSpec containers(List<Container> containers) {
+    this.containers = containers;
     return this;
   }
 
   
   @ApiModelProperty(required = true, value = "")
-  @JsonProperty("services")
+  @JsonProperty("containers")
   @NotNull
-  public List<Service> getServices() {
-    return services;
+  public List<Container> getContainers() {
+    return containers;
   }
-  public void setServices(List<Service> services) {
-    this.services = services;
-  }
-
-  /**
-   **/
-  public CheServiceSpec pods(List<Pod> pods) {
-    this.pods = pods;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("pods")
-  @NotNull
-  public List<Pod> getPods() {
-    return pods;
-  }
-  public void setPods(List<Pod> pods) {
-    this.pods = pods;
-  }
-
-  /**
-   **/
-  public CheServiceSpec commands(List<CheCommand> commands) {
-    this.commands = commands;
-    return this;
-  }
-
-  
-  @ApiModelProperty(required = true, value = "")
-  @JsonProperty("commands")
-  @NotNull
-  public List<CheCommand> getCommands() {
-    return commands;
-  }
-  public void setCommands(List<CheCommand> commands) {
-    this.commands = commands;
+  public void setContainers(List<Container> containers) {
+    this.containers = containers;
   }
 
 
@@ -104,14 +64,12 @@ public class CheServiceSpec   {
     }
     CheServiceSpec cheServiceSpec = (CheServiceSpec) o;
     return Objects.equals(version, cheServiceSpec.version) &&
-        Objects.equals(services, cheServiceSpec.services) &&
-        Objects.equals(pods, cheServiceSpec.pods) &&
-        Objects.equals(commands, cheServiceSpec.commands);
+        Objects.equals(containers, cheServiceSpec.containers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(version, services, pods, commands);
+    return Objects.hash(version, containers);
   }
 
   @Override
@@ -120,9 +78,7 @@ public class CheServiceSpec   {
     sb.append("class CheServiceSpec {\n");
     
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    services: ").append(toIndentedString(services)).append("\n");
-    sb.append("    pods: ").append(toIndentedString(pods)).append("\n");
-    sb.append("    commands: ").append(toIndentedString(commands)).append("\n");
+    sb.append("    containers: ").append(toIndentedString(containers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
