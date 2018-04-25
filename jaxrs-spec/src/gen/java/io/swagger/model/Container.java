@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import io.swagger.model.Command;
 import io.swagger.model.EnvVar;
 import io.swagger.model.ResourceRequirements;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Container   {
   private @Valid String image = null;
   private @Valid List<EnvVar> env = new ArrayList<EnvVar>();
   private @Valid ResourceRequirements resources = null;
+  private @Valid List<Command> commands = new ArrayList<Command>();
 
   /**
    **/
@@ -73,6 +75,24 @@ public class Container   {
     this.resources = resources;
   }
 
+  /**
+   * List of container commands
+   **/
+  public Container commands(List<Command> commands) {
+    this.commands = commands;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "List of container commands")
+  @JsonProperty("commands")
+  public List<Command> getCommands() {
+    return commands;
+  }
+  public void setCommands(List<Command> commands) {
+    this.commands = commands;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -85,12 +105,13 @@ public class Container   {
     Container container = (Container) o;
     return Objects.equals(image, container.image) &&
         Objects.equals(env, container.env) &&
-        Objects.equals(resources, container.resources);
+        Objects.equals(resources, container.resources) &&
+        Objects.equals(commands, container.commands);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(image, env, resources);
+    return Objects.hash(image, env, resources, commands);
   }
 
   @Override
@@ -101,6 +122,7 @@ public class Container   {
     sb.append("    image: ").append(toIndentedString(image)).append("\n");
     sb.append("    env: ").append(toIndentedString(env)).append("\n");
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
+    sb.append("    commands: ").append(toIndentedString(commands)).append("\n");
     sb.append("}");
     return sb.toString();
   }
