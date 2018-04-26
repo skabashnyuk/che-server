@@ -1,5 +1,8 @@
 package io.swagger.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -14,6 +17,7 @@ public class Server   {
   private @Valid String name = null;
   private @Valid Integer port = null;
   private @Valid String protocol = null;
+  private @Valid Map<String, String> attributes = new HashMap<String, String>();
 
   /**
    **/
@@ -69,6 +73,23 @@ public class Server   {
     this.protocol = protocol;
   }
 
+  /**
+   **/
+  public Server attributes(Map<String, String> attributes) {
+    this.attributes = attributes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("attributes")
+  public Map<String, String> getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(Map<String, String> attributes) {
+    this.attributes = attributes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -81,12 +102,13 @@ public class Server   {
     Server server = (Server) o;
     return Objects.equals(name, server.name) &&
         Objects.equals(port, server.port) &&
-        Objects.equals(protocol, server.protocol);
+        Objects.equals(protocol, server.protocol) &&
+        Objects.equals(attributes, server.attributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, port, protocol);
+    return Objects.hash(name, port, protocol, attributes);
   }
 
   @Override
@@ -97,6 +119,7 @@ public class Server   {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    port: ").append(toIndentedString(port)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

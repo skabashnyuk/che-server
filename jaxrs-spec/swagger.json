@@ -424,6 +424,12 @@
         "protocol" : {
           "type" : "string",
           "example" : "ws"
+        },
+        "attributes" : {
+          "type" : "object",
+          "additionalProperties" : {
+            "type" : "string"
+          }
         }
       }
     },
