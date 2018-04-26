@@ -24,4 +24,7 @@ type Container struct {
 
 	// List of container servers
 	Servers []Server `json:"servers,omitempty"`
+
+	// List of container volumes
+	Volumes []Volume `json:"volumes,omitempty"`
 }

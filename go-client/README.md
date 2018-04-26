@@ -48,6 +48,7 @@ Class | Method | HTTP request | Description
  - [ResourceRequirements](docs/ResourceRequirements.md)
  - [Server](docs/Server.md)
  - [TypeMeta](docs/TypeMeta.md)
+ - [Volume](docs/Volume.md)
 
 
 ## Documentation For Authorization
