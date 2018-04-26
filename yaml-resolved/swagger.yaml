@@ -336,6 +336,7 @@ definitions:
       path:
         type: string
         example: ~/.m2
+        description: path of the volume in running container
   Server:
     type: object
     required:
