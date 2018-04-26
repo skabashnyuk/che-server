@@ -319,8 +319,6 @@ definitions:
         description: List of container servers
         items:
           $ref: '#/definitions/Server'
-      attributes:
-        type: string
   Server:
     type: object
     required:
