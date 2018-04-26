@@ -449,19 +449,19 @@
     },
     "ResourceRequirements" : {
       "type" : "object",
-      "required" : [ "requests" ],
       "properties" : {
         "requests" : {
-          "type" : "array",
-          "description" : "Requests describes the minimum amount of compute resources required.",
-          "items" : {
-            "$ref" : "#/definitions/ResourceList"
+          "type" : "object",
+          "description" : "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value.",
+          "additionalProperties" : {
+            "$ref" : "#/definitions/Quantity"
           }
         }
-      }
+      },
+      "description" : "Compute Resources required by this container. Cannot be updated. More"
     },
-    "ResourceList" : {
-      "type" : "object"
+    "Quantity" : {
+      "type" : "string"
     },
     "EnvVar" : {
       "type" : "object",
