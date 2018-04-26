@@ -4,6 +4,7 @@ import io.swagger.model.Command;
 import io.swagger.model.EnvVar;
 import io.swagger.model.ResourceRequirements;
 import io.swagger.model.Server;
+import io.swagger.model.Volume;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -22,6 +23,7 @@ public class Container   {
   private @Valid ResourceRequirements resources = null;
   private @Valid List<Command> commands = new ArrayList<Command>();
   private @Valid List<Server> servers = new ArrayList<Server>();
+  private @Valid List<Volume> volumes = new ArrayList<Volume>();
 
   /**
    **/
@@ -112,6 +114,24 @@ public class Container   {
     this.servers = servers;
   }
 
+  /**
+   * List of container volumes
+   **/
+  public Container volumes(List<Volume> volumes) {
+    this.volumes = volumes;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "List of container volumes")
+  @JsonProperty("volumes")
+  public List<Volume> getVolumes() {
+    return volumes;
+  }
+  public void setVolumes(List<Volume> volumes) {
+    this.volumes = volumes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -126,12 +146,13 @@ public class Container   {
         Objects.equals(env, container.env) &&
         Objects.equals(resources, container.resources) &&
         Objects.equals(commands, container.commands) &&
-        Objects.equals(servers, container.servers);
+        Objects.equals(servers, container.servers) &&
+        Objects.equals(volumes, container.volumes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(image, env, resources, commands, servers);
+    return Objects.hash(image, env, resources, commands, servers, volumes);
   }
 
   @Override
@@ -144,6 +165,7 @@ public class Container   {
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    commands: ").append(toIndentedString(commands)).append("\n");
     sb.append("    servers: ").append(toIndentedString(servers)).append("\n");
+    sb.append("    volumes: ").append(toIndentedString(volumes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

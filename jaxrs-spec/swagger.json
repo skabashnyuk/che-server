@@ -403,6 +403,27 @@
           "items" : {
             "$ref" : "#/definitions/Server"
           }
+        },
+        "volumes" : {
+          "type" : "array",
+          "description" : "List of container volumes",
+          "items" : {
+            "$ref" : "#/definitions/Volume"
+          }
+        }
+      }
+    },
+    "Volume" : {
+      "type" : "object",
+      "required" : [ "name", "path" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "m2"
+        },
+        "path" : {
+          "type" : "string",
+          "example" : "~/.m2"
         }
       }
     },
