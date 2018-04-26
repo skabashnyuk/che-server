@@ -33,6 +33,7 @@ public class Volume   {
   }
 
   /**
+   * path of the volume in running container
    **/
   public Volume path(String path) {
     this.path = path;
@@ -40,7 +41,7 @@ public class Volume   {
   }
 
   
-  @ApiModelProperty(example = "~/.m2", required = true, value = "")
+  @ApiModelProperty(example = "~/.m2", required = true, value = "path of the volume in running container")
   @JsonProperty("path")
   @NotNull
   public String getPath() {

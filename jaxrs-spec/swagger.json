@@ -423,7 +423,8 @@
         },
         "path" : {
           "type" : "string",
-          "example" : "~/.m2"
+          "example" : "~/.m2",
+          "description" : "path of the volume in running container"
         }
       }
     },
