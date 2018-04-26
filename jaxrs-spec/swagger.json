@@ -403,9 +403,6 @@
           "items" : {
             "$ref" : "#/definitions/Server"
           }
-        },
-        "attributes" : {
-          "type" : "string"
         }
       }
     },

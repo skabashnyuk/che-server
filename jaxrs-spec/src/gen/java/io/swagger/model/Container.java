@@ -22,7 +22,6 @@ public class Container   {
   private @Valid ResourceRequirements resources = null;
   private @Valid List<Command> commands = new ArrayList<Command>();
   private @Valid List<Server> servers = new ArrayList<Server>();
-  private @Valid String attributes = null;
 
   /**
    **/
@@ -113,23 +112,6 @@ public class Container   {
     this.servers = servers;
   }
 
-  /**
-   **/
-  public Container attributes(String attributes) {
-    this.attributes = attributes;
-    return this;
-  }
-
-  
-  @ApiModelProperty(value = "")
-  @JsonProperty("attributes")
-  public String getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(String attributes) {
-    this.attributes = attributes;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -144,13 +126,12 @@ public class Container   {
         Objects.equals(env, container.env) &&
         Objects.equals(resources, container.resources) &&
         Objects.equals(commands, container.commands) &&
-        Objects.equals(servers, container.servers) &&
-        Objects.equals(attributes, container.attributes);
+        Objects.equals(servers, container.servers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(image, env, resources, commands, servers, attributes);
+    return Objects.hash(image, env, resources, commands, servers);
   }
 
   @Override
@@ -163,7 +144,6 @@ public class Container   {
     sb.append("    resources: ").append(toIndentedString(resources)).append("\n");
     sb.append("    commands: ").append(toIndentedString(commands)).append("\n");
     sb.append("    servers: ").append(toIndentedString(servers)).append("\n");
-    sb.append("    attributes: ").append(toIndentedString(attributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }
