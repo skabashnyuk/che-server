@@ -337,6 +337,10 @@ definitions:
       protocol:
         type: string
         example: ws
+      attributes:
+        type: object
+        additionalProperties:
+          type: string
   Command:
     type: object
     required:
