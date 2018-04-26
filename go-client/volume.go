@@ -14,5 +14,6 @@ type Volume struct {
 
 	Name string `json:"name"`
 
+	// path of the volume in running container
 	Path string `json:"path"`
 }
