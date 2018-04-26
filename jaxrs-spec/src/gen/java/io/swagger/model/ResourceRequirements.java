@@ -1,40 +1,37 @@
 package io.swagger.model;
 
-import io.swagger.annotations.ApiModel;
-import java.util.HashMap;
+import io.swagger.model.ResourceList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 
-/**
- * Compute Resources required by this container. Cannot be updated. More
- **/
 import io.swagger.annotations.*;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-@ApiModel(description = "Compute Resources required by this container. Cannot be updated. More")
+
 
 public class ResourceRequirements   {
   
-  private @Valid Map<String, String> requests = new HashMap<String, String>();
+  private @Valid List<ResourceList> requests = new ArrayList<ResourceList>();
 
   /**
-   * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value.
+   * Requests describes the minimum amount of compute resources required.
    **/
-  public ResourceRequirements requests(Map<String, String> requests) {
+  public ResourceRequirements requests(List<ResourceList> requests) {
     this.requests = requests;
     return this;
   }
 
   
-  @ApiModelProperty(value = "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value.")
+  @ApiModelProperty(required = true, value = "Requests describes the minimum amount of compute resources required.")
   @JsonProperty("requests")
-  public Map<String, String> getRequests() {
+  @NotNull
+  public List<ResourceList> getRequests() {
     return requests;
   }
-  public void setRequests(Map<String, String> requests) {
+  public void setRequests(List<ResourceList> requests) {
     this.requests = requests;
   }
 

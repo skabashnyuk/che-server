@@ -386,44 +386,24 @@
           "items" : {
             "$ref" : "#/definitions/EnvVar"
           }
-        },
-        "resources" : {
-          "$ref" : "#/definitions/ResourceRequirements"
-        },
-        "commands" : {
-          "type" : "array",
-          "description" : "List of container commands",
-          "items" : {
-            "$ref" : "#/definitions/Command"
-          }
-        },
-        "servers" : {
-          "type" : "array",
-          "description" : "List of container servers",
-          "items" : {
-            "$ref" : "#/definitions/Server"
-          }
-        },
-        "attributes" : {
-          "type" : "string"
         }
       }
     },
     "ResourceRequirements" : {
       "type" : "object",
+      "required" : [ "requests" ],
       "properties" : {
         "requests" : {
-          "type" : "object",
-          "description" : "Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value.",
-          "additionalProperties" : {
-            "$ref" : "#/definitions/Quantity"
+          "type" : "array",
+          "description" : "Requests describes the minimum amount of compute resources required.",
+          "items" : {
+            "$ref" : "#/definitions/ResourceList"
           }
         }
-      },
-      "description" : "Compute Resources required by this container. Cannot be updated. More"
+      }
     },
-    "Quantity" : {
-      "type" : "string"
+    "ResourceList" : {
+      "type" : "object"
     },
     "EnvVar" : {
       "type" : "object",
@@ -468,45 +448,6 @@
           "type" : "array",
           "items" : {
             "$ref" : "#/definitions/CheServiceReference"
-          }
-        }
-      }
-    },
-    "Server" : {
-      "type" : "object",
-      "required" : [ "name", "port", "protocol" ],
-      "properties" : {
-        "name" : {
-          "type" : "string",
-          "example" : "theia"
-        },
-        "port" : {
-          "type" : "integer",
-          "example" : 8080
-        },
-        "protocol" : {
-          "type" : "string",
-          "example" : "ws"
-        }
-      }
-    },
-    "Command" : {
-      "type" : "object",
-      "required" : [ "command", "name", "working-dir" ],
-      "properties" : {
-        "name" : {
-          "type" : "string",
-          "example" : "build"
-        },
-        "working-dir" : {
-          "type" : "string",
-          "example" : "$(project)"
-        },
-        "command" : {
-          "type" : "array",
-          "items" : {
-            "type" : "string",
-            "example" : "mvn"
           }
         }
       }
