@@ -378,7 +378,8 @@
       "properties" : {
         "image" : {
           "type" : "string",
-          "example" : "eclipse/che-theia:nightly"
+          "example" : "eclipse/che-theia:nightly",
+          "description" : "Docker image name"
         },
         "env" : {
           "type" : "array",

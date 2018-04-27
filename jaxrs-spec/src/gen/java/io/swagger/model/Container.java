@@ -26,6 +26,7 @@ public class Container   {
   private @Valid List<Volume> volumes = new ArrayList<Volume>();
 
   /**
+   * Docker image name
    **/
   public Container image(String image) {
     this.image = image;
@@ -33,7 +34,7 @@ public class Container   {
   }
 
   
-  @ApiModelProperty(example = "eclipse/che-theia:nightly", required = true, value = "")
+  @ApiModelProperty(example = "eclipse/che-theia:nightly", required = true, value = "Docker image name")
   @JsonProperty("image")
   @NotNull
   public String getImage() {
