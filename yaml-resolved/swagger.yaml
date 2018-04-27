@@ -309,6 +309,7 @@ definitions:
         items:
           $ref: '#/definitions/EnvVar'
       resources:
+        description: Compute Resources required by this container.
         $ref: '#/definitions/ResourceRequirements'
       commands:
         type: array
