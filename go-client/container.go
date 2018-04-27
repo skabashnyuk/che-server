@@ -18,6 +18,7 @@ type Container struct {
 	// List of environment variables to set in the container. Cannot be updated.
 	Env []EnvVar `json:"env,omitempty"`
 
+	// Compute Resources required by this container.
 	Resources *ResourceRequirements `json:"resources,omitempty"`
 
 	// List of container commands
