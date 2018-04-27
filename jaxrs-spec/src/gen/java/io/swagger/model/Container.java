@@ -63,6 +63,7 @@ public class Container   {
   }
 
   /**
+   * Compute Resources required by this container.
    **/
   public Container resources(ResourceRequirements resources) {
     this.resources = resources;
@@ -70,7 +71,7 @@ public class Container   {
   }
 
   
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Compute Resources required by this container.")
   @JsonProperty("resources")
   public ResourceRequirements getResources() {
     return resources;

@@ -389,6 +389,7 @@
           }
         },
         "resources" : {
+          "description" : "Compute Resources required by this container.",
           "$ref" : "#/definitions/ResourceRequirements"
         },
         "commands" : {
