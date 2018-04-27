@@ -12,6 +12,7 @@ package swagger
 
 type Container struct {
 
+	// Docker image name
 	Image string `json:"image"`
 
 	// List of environment variables to set in the container. Cannot be updated.
