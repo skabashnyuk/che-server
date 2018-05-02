@@ -66,10 +66,31 @@ var routes = Routes{
 	},
 
 	Route{
+		"DeletePluginByNameAndVersion",
+		"DELETE",
+		"/skabashniuk/Che/1.0.0/plugin/{name}/{version}",
+		DeletePluginByNameAndVersion,
+	},
+
+	Route{
 		"DeleteServiceByNameAndVersion",
 		"DELETE",
 		"/skabashniuk/Che/1.0.0/service/{name}/{version}",
 		DeleteServiceByNameAndVersion,
+	},
+
+	Route{
+		"GetChePlugins",
+		"GET",
+		"/skabashniuk/Che/1.0.0/plugin",
+		GetChePlugins,
+	},
+
+	Route{
+		"GetPluginByNameAndVersion",
+		"GET",
+		"/skabashniuk/Che/1.0.0/plugin/{name}/{version}",
+		GetPluginByNameAndVersion,
 	},
 
 	Route{
