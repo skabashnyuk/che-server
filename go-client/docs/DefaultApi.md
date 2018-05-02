@@ -7,7 +7,10 @@ Method | HTTP request | Description
 [**AddCheService**](DefaultApi.md#AddCheService) | **Post** /service | Create a new CheService
 [**AddFeature**](DefaultApi.md#AddFeature) | **Post** /feature | Create a new CheFeature
 [**DeleteFeatureByNameAndVersion**](DefaultApi.md#DeleteFeatureByNameAndVersion) | **Delete** /feature/{name}/{version} | Removes CheFeature by name and version
+[**DeletePluginByNameAndVersion**](DefaultApi.md#DeletePluginByNameAndVersion) | **Delete** /plugin/{name}/{version} | Removes ChePlugin by name and version
 [**DeleteServiceByNameAndVersion**](DefaultApi.md#DeleteServiceByNameAndVersion) | **Delete** /service/{name}/{version} | Removes CheService by name and version
+[**GetChePlugins**](DefaultApi.md#GetChePlugins) | **Get** /plugin | Return list of latest version of all plugins
+[**GetPluginByNameAndVersion**](DefaultApi.md#GetPluginByNameAndVersion) | **Get** /plugin/{name}/{version} | Get ChePlugin by name and version
 [**GetServiceByIdList**](DefaultApi.md#GetServiceByIdList) | **Get** /service | Searches CheService by list of ids
 [**GetServiceByNameAndVersion**](DefaultApi.md#GetServiceByNameAndVersion) | **Get** /service/{name}/{version} | Get CheService by name and version
 [**SearchFeatureByListOfId**](DefaultApi.md#SearchFeatureByListOfId) | **Get** /feature | Searches CheFeature by list of ids
@@ -31,7 +34,7 @@ Optional parameters are passed through a map[string]interface{}.
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cheServiceItem** | [**CheService**](CheService.md)| CheFeature item to add | 
+ **cheServiceItem** | [**CheService**](CheService.md)| CheService item to add | 
 
 ### Return type
 
@@ -110,6 +113,34 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **DeletePluginByNameAndVersion**
+> DeletePluginByNameAndVersion(name, version)
+Removes ChePlugin by name and version
+
+Removes ChePlugin by name and version
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+  **name** | **string**| Service name. | 
+  **version** | **string**| Service version. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-yaml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **DeleteServiceByNameAndVersion**
 > DeleteServiceByNameAndVersion(name, version)
 Removes CheService by name and version
@@ -126,6 +157,58 @@ Name | Type | Description  | Notes
 ### Return type
 
  (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-yaml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetChePlugins**
+> []ChePlugin GetChePlugins()
+Return list of latest version of all plugins
+
+Return list of latest version of all plugins
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[]ChePlugin**](ChePlugin.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/x-yaml, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **GetPluginByNameAndVersion**
+> ChePlugin GetPluginByNameAndVersion(name, version)
+Get ChePlugin by name and version
+
+Get ChePlugin by name and version
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+  **name** | **string**| ChePlugin name. | 
+  **version** | **string**| ChePlugin version. | 
+
+### Return type
+
+[**ChePlugin**](ChePlugin.md)
 
 ### Authorization
 

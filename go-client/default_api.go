@@ -31,7 +31,7 @@ type DefaultApiService service
  Create a new CheService
 
  @param optional (nil or map[string]interface{}) with one or more of:
-     @param "cheServiceItem" (CheService) CheFeature item to add
+     @param "cheServiceItem" (CheService) CheService item to add
  @return CheService*/
 func (a *DefaultApiService) AddCheService(localVarOptionals map[string]interface{}) (CheService,  *http.Response, error) {
 	var (
@@ -226,6 +226,67 @@ func (a *DefaultApiService) DeleteFeatureByNameAndVersion(name string, version s
 	return localVarHttpResponse, err
 }
 
+/* DefaultApiService Removes ChePlugin by name and version
+ Removes ChePlugin by name and version
+
+ @param name Service name.
+ @param version Service version.
+ @return */
+func (a *DefaultApiService) DeletePluginByNameAndVersion(name string, version string) ( *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Delete")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/plugin/{name}/{version}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/x-yaml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(nil, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	return localVarHttpResponse, err
+}
+
 /* DefaultApiService Removes CheService by name and version
  Removes CheService by name and version
 
@@ -285,6 +346,136 @@ func (a *DefaultApiService) DeleteServiceByNameAndVersion(name string, version s
 	}
 
 	return localVarHttpResponse, err
+}
+
+/* DefaultApiService Return list of latest version of all plugins
+ Return list of latest version of all plugins
+
+ @return []ChePlugin*/
+func (a *DefaultApiService) GetChePlugins() ([]ChePlugin,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  []ChePlugin
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/plugin"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/x-yaml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(nil, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
+}
+
+/* DefaultApiService Get ChePlugin by name and version
+ Get ChePlugin by name and version
+
+ @param name ChePlugin name.
+ @param version ChePlugin version.
+ @return ChePlugin*/
+func (a *DefaultApiService) GetPluginByNameAndVersion(name string, version string) (ChePlugin,  *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Get")
+		localVarPostBody interface{}
+		localVarFileName string
+		localVarFileBytes []byte
+	 	successPayload  ChePlugin
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/plugin/{name}/{version}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", fmt.Sprintf("%v", name), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"version"+"}", fmt.Sprintf("%v", version), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{  }
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/x-yaml",
+		"application/json",
+		}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	r, err := a.client.prepareRequest(nil, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return successPayload, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return successPayload, localVarHttpResponse, err
+	}
+	defer localVarHttpResponse.Body.Close()
+	if localVarHttpResponse.StatusCode >= 300 {
+		return successPayload, localVarHttpResponse, reportError(localVarHttpResponse.Status)
+	}
+
+	if err = json.NewDecoder(localVarHttpResponse.Body).Decode(&successPayload); err != nil {
+		return successPayload, localVarHttpResponse, err
+	}
+
+
+	return successPayload, localVarHttpResponse, err
 }
 
 /* DefaultApiService Searches CheService by list of ids

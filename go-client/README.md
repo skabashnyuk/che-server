@@ -24,7 +24,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**AddCheService**](docs/DefaultApi.md#addcheservice) | **Post** /service | Create a new CheService
 *DefaultApi* | [**AddFeature**](docs/DefaultApi.md#addfeature) | **Post** /feature | Create a new CheFeature
 *DefaultApi* | [**DeleteFeatureByNameAndVersion**](docs/DefaultApi.md#deletefeaturebynameandversion) | **Delete** /feature/{name}/{version} | Removes CheFeature by name and version
+*DefaultApi* | [**DeletePluginByNameAndVersion**](docs/DefaultApi.md#deletepluginbynameandversion) | **Delete** /plugin/{name}/{version} | Removes ChePlugin by name and version
 *DefaultApi* | [**DeleteServiceByNameAndVersion**](docs/DefaultApi.md#deleteservicebynameandversion) | **Delete** /service/{name}/{version} | Removes CheService by name and version
+*DefaultApi* | [**GetChePlugins**](docs/DefaultApi.md#getcheplugins) | **Get** /plugin | Return list of latest version of all plugins
+*DefaultApi* | [**GetPluginByNameAndVersion**](docs/DefaultApi.md#getpluginbynameandversion) | **Get** /plugin/{name}/{version} | Get ChePlugin by name and version
 *DefaultApi* | [**GetServiceByIdList**](docs/DefaultApi.md#getservicebyidlist) | **Get** /service | Searches CheService by list of ids
 *DefaultApi* | [**GetServiceByNameAndVersion**](docs/DefaultApi.md#getservicebynameandversion) | **Get** /service/{name}/{version} | Get CheService by name and version
 *DefaultApi* | [**SearchFeatureByListOfId**](docs/DefaultApi.md#searchfeaturebylistofid) | **Get** /feature | Searches CheFeature by list of ids
@@ -35,6 +38,7 @@ Class | Method | HTTP request | Description
 
  - [CheFeature](docs/CheFeature.md)
  - [CheFeatureSpec](docs/CheFeatureSpec.md)
+ - [ChePlugin](docs/ChePlugin.md)
  - [CheService](docs/CheService.md)
  - [CheServiceParameter](docs/CheServiceParameter.md)
  - [CheServiceReference](docs/CheServiceReference.md)
@@ -44,6 +48,8 @@ Class | Method | HTTP request | Description
  - [EnvVar](docs/EnvVar.md)
  - [ModelError](docs/ModelError.md)
  - [ObjectMeta](docs/ObjectMeta.md)
+ - [PluginLicense](docs/PluginLicense.md)
+ - [PluginOwner](docs/PluginOwner.md)
  - [Quantity](docs/Quantity.md)
  - [ResourceRequirements](docs/ResourceRequirements.md)
  - [Server](docs/Server.md)
