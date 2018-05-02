@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/feature")
 @Api(description = "the feature API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-04-27T10:51:30.065Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-05-02T07:14:14.765Z")
 public class FeatureApi {
 
     @POST

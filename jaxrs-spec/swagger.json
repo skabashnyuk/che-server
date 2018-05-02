@@ -16,6 +16,109 @@
   "basePath" : "/skabashniuk/Che/1.0.0",
   "schemes" : [ "https" ],
   "paths" : {
+    "/plugin" : {
+      "get" : {
+        "summary" : "Return list of latest version of all plugins",
+        "description" : "Return list of latest version of all plugins",
+        "operationId" : "getChePlugins",
+        "produces" : [ "application/x-yaml", "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "The ChePlugin successfully fetched",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/ChePlugin"
+              }
+            }
+          },
+          "500" : {
+            "description" : "500 Internal server error occurred",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/plugin/{name}/{version}" : {
+      "get" : {
+        "summary" : "Get ChePlugin by name and version",
+        "description" : "Get ChePlugin by name and version",
+        "operationId" : "getPluginByNameAndVersion",
+        "produces" : [ "application/x-yaml", "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "ChePlugin name.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "ChePlugin version.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "The ChePlugin successfully fetched",
+            "schema" : {
+              "$ref" : "#/definitions/ChePlugin"
+            }
+          },
+          "500" : {
+            "description" : "500 Internal server error occurred",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "Removes ChePlugin by name and version",
+        "description" : "Removes ChePlugin by name and version",
+        "operationId" : "deletePluginByNameAndVersion",
+        "produces" : [ "application/x-yaml", "application/json" ],
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "path",
+          "description" : "Service name.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "version",
+          "in" : "path",
+          "description" : "Service version.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "The ChePlugin successfully removed"
+          },
+          "403" : {
+            "description" : "403 The user does not have access to update resource",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "404 The specified resource was not found",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "500 Internal server error occurred",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
     "/service" : {
       "get" : {
         "summary" : "Searches CheService by list of ids",
@@ -60,7 +163,7 @@
         "parameters" : [ {
           "in" : "body",
           "name" : "CheServiceItem",
-          "description" : "CheFeature item to add",
+          "description" : "CheService item to add",
           "required" : false,
           "schema" : {
             "$ref" : "#/definitions/CheService"
@@ -602,6 +705,98 @@
           "additionalProperties" : {
             "type" : "string"
           }
+        }
+      }
+    },
+    "ChePlugin" : {
+      "type" : "object",
+      "required" : [ "description", "name", "owner", "title", "version" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "che-theia-ide",
+          "description" : "Plugin Name"
+        },
+        "version" : {
+          "type" : "string",
+          "example" : "0.0.1",
+          "description" : "Plugin version"
+        },
+        "title" : {
+          "type" : "string",
+          "example" : "Theia IDE service",
+          "description" : "Plugin title"
+        },
+        "created_at" : {
+          "type" : "string",
+          "example" : "2015-11-22T05:40:57Z",
+          "description" : "Plugin created time"
+        },
+        "updated_at" : {
+          "type" : "string",
+          "example" : "2018-04-22T00:27:28Z",
+          "description" : "Plugin updated time"
+        },
+        "installation_count" : {
+          "type" : "integer",
+          "example" : 88,
+          "description" : "Plugin installation count"
+        },
+        "description" : {
+          "type" : "string",
+          "example" : "Eclipse Che Theia IDE",
+          "description" : "Plugin description"
+        },
+        "licese" : {
+          "$ref" : "#/definitions/PluginLicense"
+        },
+        "owner" : {
+          "$ref" : "#/definitions/PluginOwner"
+        }
+      }
+    },
+    "PluginLicense" : {
+      "type" : "object",
+      "required" : [ "key", "name", "url" ],
+      "properties" : {
+        "key" : {
+          "type" : "string",
+          "example" : "mit",
+          "description" : "License key"
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "MIT License",
+          "description" : "License Name"
+        },
+        "url" : {
+          "type" : "string",
+          "example" : "https://api.github.com/licenses/mit",
+          "description" : "License url"
+        }
+      }
+    },
+    "PluginOwner" : {
+      "type" : "object",
+      "required" : [ "name" ],
+      "properties" : {
+        "name" : {
+          "type" : "string",
+          "example" : "RedHat",
+          "description" : "Plugin owner"
+        },
+        "avatar_url" : {
+          "type" : "string",
+          "description" : "Owner awatar url"
+        },
+        "gravatar_id" : {
+          "type" : "string",
+          "description" : "Owner gravatar id"
+        },
+        "url" : {
+          "type" : "string",
+          "example" : "https://redhat.com",
+          "description" : "Owner url"
         }
       }
     },
