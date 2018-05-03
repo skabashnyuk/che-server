@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @Path("/plugin")
 @Api(description = "the plugin API")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-05-03T08:34:18.241Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2018-05-03T08:34:52.413Z")
 public class PluginApi {
 
     @DELETE
